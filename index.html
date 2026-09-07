@@ -1461,7 +1461,8 @@ async function callAiInApp(title, prompt){
     });
     const d=await r.json();
     if(d.error){throw new Error(d.error.message);}
-    const text=d.content[0].text;
+    const text=(d.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n\n');
+    if(!text) throw new Error('No text in response.');
     showAiModal(title, text);
     return text;
   }catch(e){
