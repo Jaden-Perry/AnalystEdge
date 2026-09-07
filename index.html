@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AnalystEdge — IB Interview Prep</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#070d1a;color:#e2e8f0;font-family:-apple-system,'Segoe UI',Helvetica,sans-serif;min-height:100vh;font-size:15px;}
+::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:#0a1128;}::-webkit-scrollbar-thumb{background:#1e3a5f;border-radius:3px;}
+
+/* NAV */
+#nav{background:#0a1128;border-bottom:1px solid #1e3a5f;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100;}
+.logo{display:flex;align-items:center;gap:8px;}
+.logo-icon{width:28px;height:28px;background:#c9a84c;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.logo-text{font-weight:800;font-size:14px;letter-spacing:.05em;}
+.logo-text span{color:#c9a84c;}
+.nav-tabs{display:flex;gap:2px;}
+.nav-btn{padding:5px 12px;border-radius:6px;border:none;cursor:pointer;font-size:12px;font-weight:500;background:transparent;color:#94a3b8;transition:all .15s;}
+.nav-btn:hover{color:#e2e8f0;}
+.nav-btn.active{background:#c9a84c;color:#070d1a;}
+.nav-status{font-size:11px;color:#64748b;display:flex;align-items:center;gap:6px;}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;}
+
+/* LAYOUT */
+#main{max-width:1080px;margin:0 auto;padding:28px 24px;}
+.page{display:none;}.page.active{display:block;}
+
+/* CORE ELEMENTS */
+.card{background:#0a1128;border:1px solid #1e3a5f;border-radius:10px;}
+.card-gold{border-top:2px solid #c9a84c;}
+.btn-gold{background:#c9a84c;color:#070d1a;border:none;padding:10px 22px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;transition:opacity .15s;}
+.btn-gold:hover{opacity:.88;}
+.btn-gold:disabled{background:#1e3a5f;color:#4b5563;cursor:default;opacity:1;}
+.btn-ghost{background:transparent;border:1px solid #1e3a5f;color:#94a3b8;padding:9px 18px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;}
+.btn-ghost:hover{border-color:#c9a84c60;}
+.btn-blue{background:#1e3a5f;color:#bfdbfe;border:1px solid #2d4f7a;padding:9px 18px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;}
+.btn-blue:hover{border-color:#60a5fa60;}
+.tag{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600;display:inline-block;}
+.tag-blue{background:#1e3a5f40;color:#60a5fa;border:1px solid #1e3a5f;}
+.tag-easy{color:#4ade80;border:1px solid #1e3a5f40;}
+.tag-medium{color:#fbbf24;border:1px solid #1e3a5f40;}
+.tag-hard{color:#f87171;border:1px solid #1e3a5f40;}
+textarea,input[type=number]{font-family:inherit;background:#070d1a;border:1px solid #1e3a5f;border-radius:8px;padding:11px 13px;color:#e2e8f0;font-size:14px;outline:none;width:100%;resize:vertical;}
+textarea:focus,input:focus{border-color:#c9a84c50;}
+textarea[readonly]{color:#94a3b8;font-size:13px;line-height:1.6;}
+.back-btn{background:none;border:none;color:#c9a84c;cursor:pointer;font-size:13px;margin-bottom:16px;padding:0;}
+.step-label{font-size:11px;color:#64748b;font-weight:700;letter-spacing:.1em;display:flex;align-items:center;gap:7px;margin-bottom:8px;}
+.step-num{background:#c9a84c;color:#070d1a;width:17px;height:17px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;}
+.copy-ok{color:#4ade80;font-size:12px;font-weight:600;margin-left:8px;display:none;}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.muted{color:#64748b;}
+.gold{color:#c9a84c;}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.12em;color:#64748b;margin-bottom:12px;}
+
+/* DASHBOARD */
+.hero-sub{color:#c9a84c;font-size:11px;font-weight:700;letter-spacing:.18em;margin-bottom:7px;}
+.hero-title{font-size:30px;font-weight:800;line-height:1.2;margin-bottom:9px;}
+.hero-title span{color:#c9a84c;}
+.howto{background:#0a1128;border:1px solid #c9a84c40;border-radius:10px;padding:14px 16px;margin-bottom:22px;font-size:13px;color:#94a3b8;line-height:1.7;}
+.howto b{color:#e2e8f0;}
+.action-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;}
+.action-card{background:#0a1128;border:1px solid #1e3a5f;border-radius:12px;padding:20px;text-align:left;cursor:pointer;transition:border-color .2s;width:100%;}
+.action-card:hover{border-color:#c9a84c50;}
+.action-card .icon{font-size:24px;margin-bottom:9px;}
+.action-card .title{font-size:14px;font-weight:700;color:#fff;margin-bottom:5px;}
+.action-card .desc{font-size:12px;color:#64748b;line-height:1.6;}
+.action-card .cta{margin-top:12px;color:#c9a84c;font-size:12px;font-weight:700;}
+
+/* READINESS + WEAKNESS */
+.readiness-card{background:#0a1128;border:1px solid #1e3a5f;border-radius:12px;padding:20px;margin-bottom:16px;}
+.readiness-row{display:flex;align-items:center;gap:20px;}
+.readiness-num{font-size:44px;font-weight:800;line-height:1;flex-shrink:0;}
+.readiness-bar-track{height:8px;background:#1e3a5f;border-radius:4px;overflow:hidden;margin:8px 0;}
+.readiness-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#c9a84c,#4ade80);transition:width 1s ease;}
+.weakness-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.badge-critical{background:#f871711a;border:1px solid #f87171;color:#f87171;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.badge-high{background:#fbbf241a;border:1px solid #fbbf24;color:#fbbf24;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.badge-good{background:#4ade801a;border:1px solid #4ade80;color:#4ade80;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
+
+/* DAILY Q */
+.daily-card{background:#0a1128;border:1px solid #1e3a5f;border-radius:12px;padding:18px;margin-bottom:16px;}
+
+/* PATH */
+.path-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:24px;}
+.path-step{background:#0a1128;border:1px solid #1e3a5f;border-radius:8px;padding:12px 8px;text-align:center;cursor:pointer;transition:border-color .15s;}
+.path-step:hover{border-color:#c9a84c50;}
+.path-step .p-icon{font-size:18px;margin-bottom:5px;}
+.path-step .p-label{font-size:11px;font-weight:600;color:#94a3b8;}
+.path-step .p-count{font-size:10px;color:#64748b;margin-top:2px;}
+.path-arrow{display:flex;align-items:center;justify-content:center;color:#1e3a5f;font-size:16px;padding-top:20px;}
+
+/* PRACTICE */
+.cat-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+.cat-pill{padding:5px 11px;border-radius:20px;border:1px solid #1e3a5f;background:transparent;color:#94a3b8;cursor:pointer;font-size:12px;font-weight:500;transition:all .15s;}
+.cat-pill:hover{border-color:#c9a84c60;}
+.cat-pill.active{border-color:#c9a84c;color:#c9a84c;background:#c9a84c18;}
+.q-row{background:#0a1128;border:1px solid #1e3a5f;border-radius:9px;padding:13px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:border-color .15s;margin-bottom:7px;}
+.q-row:hover{border-color:#c9a84c50;}
+.q-text{font-size:13px;color:#e2e8f0;line-height:1.5;}
+.q-arrow{color:#c9a84c;font-size:18px;flex-shrink:0;}
+.score-bar-track{height:6px;background:#1e3a5f;border-radius:4px;overflow:hidden;margin:8px 0;}
+.score-bar-fill{height:100%;border-radius:4px;transition:width .8s ease;}
+
+/* FLASHCARDS */
+.fc-container{max-width:620px;margin:0 auto;}
+.fc-stats{display:flex;gap:12px;margin-bottom:20px;}
+.fc-stat{background:#0a1128;border:1px solid #1e3a5f;border-radius:8px;padding:12px 16px;flex:1;text-align:center;}
+.fc-stat-val{font-size:22px;font-weight:800;color:#c9a84c;}
+.fc-stat-label{font-size:11px;color:#64748b;margin-top:2px;}
+.fc-card-outer{perspective:1000px;height:260px;margin-bottom:20px;cursor:pointer;}
+.fc-card-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d;}
+.fc-card-outer.flipped .fc-card-inner{transform:rotateY(180deg);}
+.fc-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;display:flex;flex-direction:column;justify-content:center;padding:28px;}
+.fc-front{background:#0a1128;border:1px solid #1e3a5f;border-top:2px solid #c9a84c;}
+.fc-back{background:#0f1e38;border:1px solid #c9a84c40;transform:rotateY(180deg);}
+.fc-question{font-size:17px;font-weight:700;line-height:1.45;color:#e2e8f0;margin-bottom:14px;}
+.fc-answer{font-size:14px;color:#cbd5e1;line-height:1.7;}
+.fc-hint{font-size:12px;color:#64748b;margin-top:12px;}
+.fc-rating-row{display:flex;gap:10px;justify-content:center;margin-bottom:16px;}
+.btn-hard{background:#f871711a;border:1px solid #f87171;color:#f87171;padding:10px 22px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;}
+.btn-gotit{background:#fbbf241a;border:1px solid #fbbf24;color:#fbbf24;padding:10px 22px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;}
+.btn-easy{background:#4ade801a;border:1px solid #4ade80;color:#4ade80;padding:10px 22px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;}
+.fc-progress{font-size:13px;color:#64748b;text-align:center;margin-bottom:16px;}
+.fc-cat-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+
+/* MOCK */
+.mock-dot{width:26px;height:4px;border-radius:2px;}
+
+/* CONCEPTS */
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.concept-card{background:#0a1128;border:1px solid #1e3a5f;border-radius:12px;padding:18px;cursor:pointer;transition:border-color .15s;}
+.concept-card:hover{border-color:#c9a84c50;}
+.formula-box{background:#070d1a;border:1px solid #c9a84c30;border-radius:8px;padding:11px 14px;}
+.formula-label{font-size:11px;color:#c9a84c;font-weight:700;letter-spacing:.1em;margin-bottom:5px;}
+.formula-text{font-size:13px;font-family:'Courier New',monospace;color:#fbbf24;line-height:1.6;}
+
+/* PROGRESS */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
+.stat-card{background:#0a1128;border:1px solid #1e3a5f;border-radius:10px;padding:17px;}
+.stat-value{font-size:26px;font-weight:800;margin-bottom:3px;}
+.stat-label{font-size:11px;color:#64748b;}
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:150px;padding:0 4px;}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.bar-rect{width:100%;border-radius:4px 4px 0 0;transition:height .6s ease;min-width:26px;}
+.bar-label{font-size:10px;color:#64748b;text-align:center;margin-top:4px;}
+.bar-score{font-size:11px;font-weight:700;color:#94a3b8;}
+.history-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #1e3a5f30;}
+.history-row:last-child{border-bottom:none;}
+
+/* STORY BANK */
+.story-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+.story-tab{padding:5px 11px;border-radius:20px;border:1px solid #1e3a5f;background:transparent;color:#94a3b8;cursor:pointer;font-size:12px;font-weight:500;transition:all .15s;}
+.story-tab:hover{border-color:#c9a84c60;}
+.story-tab.active{border-color:#c9a84c;color:#c9a84c;background:#c9a84c18;}
+.story-tab.saved{border-color:#4ade8060;color:#4ade80;}
+.star-field{margin-bottom:14px;}
+.star-field label{font-size:11px;color:#64748b;font-weight:700;letter-spacing:.1em;display:block;margin-bottom:5px;}
+.star-field textarea{min-height:72px;}
+.story-tip{font-size:12px;color:#64748b;font-style:italic;line-height:1.5;margin-bottom:10px;border-left:2px solid #1e3a5f;padding-left:10px;}
+
+/* DRILLS */
+.drill-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;}
+.drill-tab{padding:6px 14px;border-radius:6px;border:1px solid #1e3a5f;background:transparent;color:#94a3b8;cursor:pointer;font-size:13px;font-weight:600;transition:all .15s;}
+.drill-tab:hover{border-color:#c9a84c60;}
+.drill-tab.active{background:#c9a84c;color:#070d1a;border-color:#c9a84c;}
+.mm-card{background:#0a1128;border:1px solid #1e3a5f;border-top:2px solid #c9a84c;border-radius:12px;padding:28px;margin-bottom:16px;text-align:center;}
+.mm-question{font-size:22px;font-weight:700;color:#e2e8f0;margin-bottom:8px;line-height:1.4;}
+.mm-cat{font-size:11px;color:#64748b;font-weight:700;letter-spacing:.1em;margin-bottom:20px;}
+.mm-timer{font-size:32px;font-weight:800;font-variant-numeric:tabular-nums;margin-bottom:20px;}
+.mm-answer-box{background:#070d1a;border:1px solid #c9a84c30;border-radius:8px;padding:16px 20px;margin-bottom:16px;display:none;}
+.mm-answer-label{font-size:11px;color:#c9a84c;font-weight:700;letter-spacing:.1em;margin-bottom:6px;}
+.mm-answer-text{font-size:16px;color:#e2e8f0;font-weight:600;line-height:1.6;}
+.mm-tip{font-size:13px;color:#94a3b8;margin-top:8px;line-height:1.5;}
+.mm-score-row{display:flex;gap:12px;margin-bottom:20px;}
+.mm-score-card{background:#0a1128;border:1px solid #1e3a5f;border-radius:8px;padding:12px;flex:1;text-align:center;}
+.mm-score-val{font-size:22px;font-weight:800;}
+.mm-score-label{font-size:11px;color:#64748b;margin-top:2px;}
+.mm-cat-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
+.resume-area{max-width:720px;}
+
+/* MODALS */
+.modal-overlay{position:fixed;inset:0;background:#000000bb;z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;}
+.modal-box{background:#0a1128;border:1px solid #1e3a5f;border-radius:14px;padding:28px;max-width:680px;width:100%;max-height:82vh;overflow-y:auto;position:relative;}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:#64748b;cursor:pointer;font-size:20px;line-height:1;}
+.modal-close:hover{color:#e2e8f0;}
+.ai-response-body{font-size:14px;color:#cbd5e1;line-height:1.8;white-space:pre-wrap;}
+.settings-box{max-width:480px;}
+.btn-explain{background:#1e3a5f20;border:1px solid #1e3a5f;color:#60a5fa;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;transition:border-color .15s;}
+.btn-explain:hover{border-color:#60a5fa60;}
+.btn-dontknow{background:#f871711a;border:1px solid #f87171;color:#f87171;padding:9px 18px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;}
+.btn-dontknow:hover{opacity:.85;}
+.ai-loading{display:flex;align-items:center;gap:10px;padding:20px;color:#64748b;font-size:14px;}
+.ai-dot{width:8px;height:8px;border-radius:50%;background:#c9a84c;animation:pulse .8s infinite alternate;}
+@keyframes pulse{from{opacity:.3;}to{opacity:1;}}
+.build-story-box{background:#070d1a;border:1px solid #4ade8030;border-radius:10px;padding:18px;margin-bottom:18px;}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="logo"><div class="logo-icon">⚡</div><div class="logo-text">ANALYST<span>EDGE</span></div></div>
+  <div class="nav-tabs">
+    <button class="nav-btn active" onclick="goTo('dash')">Home</button>
+    <button class="nav-btn" onclick="goTo('practice')">Practice</button>
+    <button class="nav-btn" onclick="goTo('flash')">Flashcards</button>
+    <button class="nav-btn" onclick="goTo('mock')">Mock Interview</button>
+    <button class="nav-btn" onclick="goTo('stories')">Story Bank</button>
+    <button class="nav-btn" onclick="goTo('drills')">Drills</button>
+    <button class="nav-btn" onclick="goTo('progress')">Progress</button>
+  </div>
+  <div class="nav-status">
+    <div id="api-badge" style="display:none;font-size:11px;color:#4ade80;margin-right:8px;">⚡ AI Connected</div>
+    <button onclick="openSettings()" style="background:none;border:1px solid #1e3a5f;color:#64748b;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:12px;" title="Settings">⚙ Settings</button>
+    <div class="status-dot" style="margin-left:6px;"></div>
+    <span id="nav-count">0 practiced</span>
+  </div>
+</nav>
+<div id="main">
+
+<!-- HOME -->
+<div class="page active" id="page-dash">
+  <p class="hero-sub">INVESTMENT BANKING PREP</p>
+  <h1 class="hero-title">Your path to the <span>offer letter</span> starts here.</h1>
+  <p class="muted" style="font-size:13px;margin-bottom:20px;">100 real IB questions · Flashcard drills · Mock interviews · Weakness tracking — all free.</p>
+
+  <div class="howto">
+    <b>How AI feedback works:</b> this app is 100% free. When you answer a question, click <b>"Copy Feedback Prompt"</b> and paste it into Claude.ai — you'll get a 1–10 score, strengths, improvements, and a model answer instantly at no cost.
+  </div>
+
+  <!-- Readiness + Weakness -->
+  <div class="readiness-card" id="readiness-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;">
+      <div style="flex:1;min-width:200px;">
+        <p class="section-label" style="margin-bottom:6px;">INTERVIEW READINESS</p>
+        <div class="readiness-row">
+          <div class="readiness-num" id="readiness-pct" style="color:#c9a84c;">0%</div>
+          <div style="flex:1;">
+            <div class="readiness-bar-track"><div class="readiness-bar-fill" id="readiness-bar" style="width:0%;"></div></div>
+            <p style="font-size:12px;color:#64748b;" id="readiness-msg">Answer questions and log scores to build your readiness score.</p>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:200px;">
+        <p class="section-label" style="margin-bottom:8px;">WEAKNESS ENGINE</p>
+        <div id="weakness-badges"><p class="muted" style="font-size:12px;">No data yet — practice to see your weak areas flagged here.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daily Question -->
+  <div class="daily-card">
+    <p class="section-label" style="margin-bottom:8px;">📅 QUESTION OF THE DAY</p>
+    <div style="display:flex;gap:8px;margin-bottom:8px;" id="daily-tags"></div>
+    <p id="daily-q" style="font-size:14px;color:#e2e8f0;font-weight:600;line-height:1.5;"></p>
+    <button class="btn-gold" style="margin-top:12px;font-size:12px;padding:8px 18px;" onclick="openDailyQ()">Practice This →</button>
+  </div>
+
+  <div class="action-grid">
+    <button class="action-card" onclick="goTo('practice')">
+      <div class="icon">💬</div><div class="title">Practice Questions</div>
+      <div class="desc">100 real questions across 6 categories. Copy the grading prompt, paste into Claude.ai, and log your score.</div>
+      <div class="cta">100 questions →</div>
+    </button>
+    <button class="action-card" onclick="goTo('flash')">
+      <div class="icon">🃏</div><div class="title">Flashcard Drills</div>
+      <div class="desc">Flip cards, rate yourself Easy / Got It / Hard. Spaced repetition surfaces the cards you keep missing.</div>
+      <div class="cta">Start drilling →</div>
+    </button>
+  </div>
+
+  <p class="section-label">RECOMMENDED LEARNING PATH</p>
+  <div style="display:flex;align-items:center;gap:4px;margin-bottom:24px;flex-wrap:wrap;">
+    <div class="path-step" onclick="goTo('practice')"><div class="p-icon">📊</div><div class="p-label">Accounting</div><div class="p-count">20 Qs</div></div>
+    <div style="color:#1e3a5f;font-size:14px;padding-bottom:10px;">›</div>
+    <div class="path-step" onclick="goTo('practice')"><div class="p-icon">💹</div><div class="p-label">Valuation</div><div class="p-count">20 Qs</div></div>
+    <div style="color:#1e3a5f;font-size:14px;padding-bottom:10px;">›</div>
+    <div class="path-step" onclick="goTo('practice')"><div class="p-icon">🤝</div><div class="p-label">M&amp;A</div><div class="p-count">15 Qs</div></div>
+    <div style="color:#1e3a5f;font-size:14px;padding-bottom:10px;">›</div>
+    <div class="path-step" onclick="goTo('practice')"><div class="p-icon">🏦</div><div class="p-label">LBO</div><div class="p-count">15 Qs</div></div>
+    <div style="color:#1e3a5f;font-size:14px;padding-bottom:10px;">›</div>
+    <div class="path-step" onclick="goTo('practice')"><div class="p-icon">🎯</div><div class="p-label">Behavioral</div><div class="p-count">15 Qs</div></div>
+    <div style="color:#1e3a5f;font-size:14px;padding-bottom:10px;">›</div>
+    <div class="path-step" onclick="goTo('practice')"><div class="p-icon">📈</div><div class="p-label">Markets</div><div class="p-count">15 Qs</div></div>
+  </div>
+</div>
+
+<!-- PRACTICE -->
+<div class="page" id="page-practice">
+  <div id="practice-list">
+    <h1 style="font-size:22px;font-weight:800;margin-bottom:4px;">Practice Questions</h1>
+    <p class="muted" style="font-size:13px;margin-bottom:18px;">100 real IB interview questions. Write your answer, copy the prompt, paste into Claude.ai, log your score.</p>
+    <div class="cat-pills" id="cat-pills"></div>
+    <div id="q-list"></div>
+  </div>
+  <div id="practice-detail" style="display:none;max-width:740px;margin:0 auto;">
+    <button class="back-btn" onclick="showPracticeList()">← Back to questions</button>
+    <div class="card card-gold" style="padding:22px;margin-bottom:16px;">
+      <div style="display:flex;gap:6px;margin-bottom:10px;" id="q-detail-tags"></div>
+      <h2 id="q-detail-text" style="font-size:18px;font-weight:700;line-height:1.4;"></h2>
+    </div>
+    <div style="margin-bottom:16px;">
+      <button class="btn-dontknow" onclick="dontKnowQuestion()">🤷 I Don't Know This — Explain It First</button>
+      <p style="font-size:11px;color:#64748b;margin-top:6px;">Gets a plain-English explanation of the concept, what interviewers expect, and how to structure a strong answer.</p>
+    </div>
+    <div class="step-label"><span class="step-num">1</span>WRITE YOUR ANSWER</div>
+    <div class="card" style="padding:16px;margin-bottom:16px;">
+      <textarea id="user-answer" rows="7" placeholder="Structure clearly. STAR for behavioral. Walk through steps for technical..." oninput="onAnswerChange()"></textarea>
+    </div>
+    <div class="step-label"><span class="step-num">2</span>GET AI FEEDBACK — FREE VIA CLAUDE.AI</div>
+    <div class="card" style="padding:16px;margin-bottom:16px;">
+      <p class="muted" style="font-size:12px;margin-bottom:10px;line-height:1.6;">Copy this prompt → paste into claude.ai → get your 1–10 score + model answer instantly (free with any Claude account).</p>
+      <textarea id="generated-prompt" readonly rows="5" style="margin-bottom:10px;"></textarea>
+      <div class="row">
+        <button class="btn-gold ai-only" id="ai-grade-btn" onclick="gradeWithAI()" disabled style="display:none;">⚡ Grade with AI</button>
+        <button class="btn-gold" id="copy-btn" onclick="copyPrompt()" disabled>Copy Feedback Prompt</button>
+        <button class="btn-blue" onclick="window.open('https://claude.ai/new','_blank')">Open Claude.ai →</button>
+        <span class="copy-ok" id="copy-ok">✓ Copied!</span>
+      </div>
+    </div>
+    <div class="step-label"><span class="step-num">3</span>LOG YOUR SCORE</div>
+    <div class="card" style="padding:16px;">
+      <p class="muted" style="font-size:12px;margin-bottom:10px;">Enter the score Claude gave you (1–10) to save it to your Progress Tracker and Readiness Score.</p>
+      <div class="row">
+        <input type="number" id="score-entry" min="1" max="10" placeholder="–" style="width:80px;text-align:center;font-weight:700;font-size:16px;">
+        <button class="btn-gold" onclick="saveScore()">Save Score</button>
+        <span class="copy-ok" id="save-ok">✓ Saved to progress!</span>
+      </div>
+    </div>
+    <div style="margin-top:14px;"><button class="btn-ghost" onclick="showPracticeList()">Back to questions</button></div>
+  </div>
+</div>
+
+<!-- FLASHCARDS -->
+<div class="page" id="page-flash">
+  <div class="fc-container">
+    <h1 style="font-size:22px;font-weight:800;margin-bottom:4px;">Flashcard Drills</h1>
+    <p class="muted" style="font-size:13px;margin-bottom:18px;">Click the card to flip. Rate yourself — Hard resurfaces immediately, Easy marks as mastered.</p>
+    <div class="fc-stats">
+      <div class="fc-stat"><div class="fc-stat-val" id="fc-total">0</div><div class="fc-stat-label">Total Cards</div></div>
+      <div class="fc-stat"><div class="fc-stat-val" id="fc-mastered" style="color:#4ade80;">0</div><div class="fc-stat-label">Mastered</div></div>
+      <div class="fc-stat"><div class="fc-stat-val" id="fc-due" style="color:#f87171;">0</div><div class="fc-stat-label">Due for Review</div></div>
+    </div>
+    <div class="fc-cat-filter" id="fc-cat-filter"></div>
+    <div id="fc-deck-view">
+      <p class="fc-progress" id="fc-progress-text"></p>
+      <div class="fc-card-outer" id="fc-card-outer" onclick="flipCard()">
+        <div class="fc-card-inner" id="fc-card-inner">
+          <div class="fc-face fc-front">
+            <div style="display:flex;gap:6px;margin-bottom:12px;" id="fc-card-tags"></div>
+            <div class="fc-question" id="fc-question"></div>
+            <div class="fc-hint" id="fc-hint">Tap to reveal answer →</div>
+          </div>
+          <div class="fc-face fc-back">
+            <div class="fc-answer" id="fc-answer"></div>
+          </div>
+        </div>
+      </div>
+      <div id="fc-rating-area" style="display:none;">
+        <div class="fc-rating-row">
+          <button class="btn-hard" onclick="rateCard('hard')">Hard — Review Again</button>
+          <button class="btn-gotit" onclick="rateCard('gotit')">Got It</button>
+          <button class="btn-easy" onclick="rateCard('easy')">Easy — Mastered</button>
+        </div>
+        <div style="text-align:center;margin-top:4px;">
+          <button class="btn-explain" onclick="explainFlashcard()">💡 Explain This in Depth →</button>
+        </div>
+      </div>
+      <div id="fc-done" style="display:none;text-align:center;padding:40px 20px;">
+        <div style="font-size:44px;margin-bottom:14px;">🎉</div>
+        <h2 style="font-size:20px;font-weight:800;margin-bottom:8px;">Deck Complete!</h2>
+        <p class="muted" style="margin-bottom:20px;font-size:13px;">You've gone through all cards in this session. Cards marked Hard will resurface if you restart.</p>
+        <button class="btn-gold" onclick="restartDeck()">Restart Deck</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MOCK INTERVIEW -->
+<div class="page" id="page-mock">
+  <div id="mock-idle" style="max-width:580px;margin:0 auto;text-align:center;padding-top:40px;">
+    <div style="font-size:48px;margin-bottom:14px;">🎤</div>
+    <h1 style="font-size:24px;font-weight:800;margin-bottom:9px;">Mock Interview</h1>
+    <p class="muted" style="line-height:1.7;margin-bottom:22px;font-size:13px;">Simulate a real IB first-round. 5 questions — 2 behavioral and 3 technical — 90-second timer each. Grade each one free via Claude.ai.</p>
+    <div class="card" style="padding:17px;margin-bottom:22px;text-align:left;">
+      <div style="display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid #1e3a5f30;font-size:13px;color:#94a3b8;"><span class="gold">✓</span> 2 Behavioral + 3 Technical questions</div>
+      <div style="display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid #1e3a5f30;font-size:13px;color:#94a3b8;"><span class="gold">✓</span> 90-second timer per question</div>
+      <div style="display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid #1e3a5f30;font-size:13px;color:#94a3b8;"><span class="gold">✓</span> Copy prompt → paste into Claude.ai → get score</div>
+      <div style="display:flex;align-items:center;gap:9px;padding:7px 0;font-size:13px;color:#94a3b8;"><span class="gold">✓</span> Full scorecard at the end</div>
+    </div>
+    <button class="btn-gold" style="font-size:14px;padding:12px 34px;" onclick="startMock()">Start Interview</button>
+  </div>
+  <div id="mock-active" style="display:none;max-width:680px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
+      <span class="muted" style="font-size:13px;">Question <strong id="mock-q-num" style="color:#e2e8f0;"></strong> of 5</span>
+      <div style="display:flex;gap:4px;" id="mock-dots"></div>
+      <div id="mock-timer" style="font-size:19px;font-weight:700;font-variant-numeric:tabular-nums;color:#60a5fa;">01:30</div>
+    </div>
+    <div class="card card-gold" style="padding:22px;margin-bottom:16px;">
+      <div id="mock-q-cat" style="font-size:11px;color:#64748b;letter-spacing:.1em;font-weight:700;margin-bottom:8px;"></div>
+      <h2 id="mock-q-text" style="font-size:18px;font-weight:700;line-height:1.4;"></h2>
+    </div>
+    <div class="step-label"><span class="step-num">1</span>WRITE YOUR ANSWER</div>
+    <textarea id="mock-answer" rows="5" placeholder="Structure your answer clearly..." style="margin-bottom:14px;" oninput="onMockAnswerChange()"></textarea>
+    <div class="step-label"><span class="step-num">2</span>GRADE FREE IN CLAUDE.AI</div>
+    <div class="card" style="padding:14px;margin-bottom:14px;">
+      <textarea id="mock-gen-prompt" readonly rows="4" style="margin-bottom:10px;"></textarea>
+      <div class="row">
+        <button class="btn-gold ai-only" id="mock-ai-grade-btn" onclick="gradeMockWithAI()" disabled style="display:none;">⚡ Grade with AI</button>
+        <button class="btn-gold" id="mock-copy-btn" onclick="copyMockPrompt()" disabled>Copy Feedback Prompt</button>
+        <button class="btn-blue" onclick="window.open('https://claude.ai/new','_blank')">Open Claude.ai →</button>
+        <span class="copy-ok" id="mock-copy-ok">✓ Copied!</span>
+      </div>
+    </div>
+    <div class="step-label"><span class="step-num">3</span>ENTER SCORE TO CONTINUE</div>
+    <div class="card" style="padding:14px;">
+      <div class="row">
+        <input type="number" id="mock-score" min="1" max="10" placeholder="–" style="width:76px;text-align:center;font-weight:700;font-size:15px;">
+        <button class="btn-gold" id="mock-next-btn" onclick="submitMockScore()">Save & Continue →</button>
+      </div>
+    </div>
+  </div>
+  <div id="mock-complete" style="display:none;max-width:700px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:26px;">
+      <div style="font-size:44px;margin-bottom:9px;">🏆</div>
+      <h1 style="font-size:24px;font-weight:800;">Interview Complete</h1>
+      <p class="muted" style="margin-top:6px;font-size:13px;">Here's how you performed across all 5 questions.</p>
+    </div>
+    <div class="card card-gold" style="padding:20px;margin-bottom:16px;text-align:center;">
+      <div id="mock-avg" style="font-size:48px;font-weight:800;line-height:1;"></div>
+      <div style="font-size:11px;color:#64748b;margin-top:3px;">Average Score / 10</div>
+    </div>
+    <div id="mock-results"></div>
+    <button class="btn-gold" style="margin-top:13px;" onclick="resetMock()">Retry Interview</button>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="page" id="page-progress">
+  <h1 style="font-size:22px;font-weight:800;margin-bottom:4px;">Progress Tracker</h1>
+  <p class="muted" style="font-size:13px;margin-bottom:20px;">Your logged scores across all practice sessions.</p>
+  <div id="prog-empty" class="card" style="padding:44px 20px;text-align:center;">
+    <div style="font-size:36px;margin-bottom:11px;">📊</div>
+    <h2 style="font-size:16px;font-weight:700;color:#cbd5e1;margin-bottom:6px;">No data yet</h2>
+    <p class="muted" style="font-size:13px;">Practice questions and log your Claude scores to start tracking.</p>
+  </div>
+  <div id="prog-data" style="display:none;">
+    <div class="stat-grid" id="stat-grid"></div>
+    <div class="card" style="padding:20px;margin-bottom:16px;">
+      <p class="section-label" style="margin-bottom:16px;">AVG SCORE BY CATEGORY</p>
+      <div class="bar-chart" id="bar-chart"></div>
+    </div>
+    <div class="card" style="padding:18px;">
+      <p class="section-label" style="margin-bottom:13px;">RECENT ACTIVITY</p>
+      <div id="history-list"></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<!-- STORY BANK PAGE -->
+<div class="page" id="page-stories" style="display:none;">
+<div id="main" style="max-width:1080px;margin:0 auto;padding:28px 24px;">
+  <h1 style="font-size:22px;font-weight:800;margin-bottom:4px;">STAR Story Bank</h1>
+  <p class="muted" style="font-size:13px;margin-bottom:6px;">Build your 8–10 core behavioral stories once. Review before every interview. Stories auto-save to your browser.</p>
+  <div class="howto" style="margin-bottom:18px;">
+    <b>The STAR framework:</b> <b>S</b>ituation (context) → <b>T</b>ask (what you needed to do) → <b>A</b>ction (specifically what YOU did) → <b>R</b>esult (quantified outcome). The Action section should be 60% of your answer.
+  </div>
+  <div class="story-tabs" id="story-tabs"></div>
+  <div id="story-editor"></div>
+</div>
+</div>
+
+<!-- DRILLS PAGE -->
+<div class="page" id="page-drills" style="display:none;">
+<div id="main" style="max-width:1080px;margin:0 auto;padding:28px 24px;">
+  <h1 style="font-size:22px;font-weight:800;margin-bottom:4px;">Drills</h1>
+  <p class="muted" style="font-size:13px;margin-bottom:20px;">Mental math, market sizing, and resume bullet review — the gaps most candidates don't prep until it's too late.</p>
+  <div class="drill-tabs">
+    <button class="drill-tab active" onclick="switchDrill('math')">🧮 Mental Math</button>
+    <button class="drill-tab" onclick="switchDrill('resume')">📄 Resume Reviewer</button>
+  </div>
+
+  <!-- Mental Math -->
+  <div id="drill-math">
+    <div class="mm-score-row" id="mm-score-row">
+      <div class="mm-score-card"><div class="mm-score-val" id="mm-correct" style="color:#4ade80;">0</div><div class="mm-score-label">Correct</div></div>
+      <div class="mm-score-card"><div class="mm-score-val" id="mm-wrong" style="color:#f87171;">0</div><div class="mm-score-label">Incorrect</div></div>
+      <div class="mm-score-card"><div class="mm-score-val" id="mm-pct" style="color:#c9a84c;">—</div><div class="mm-score-label">Accuracy</div></div>
+      <div class="mm-score-card"><div class="mm-score-val" id="mm-streak" style="color:#fbbf24;">0</div><div class="mm-score-label">Streak 🔥</div></div>
+    </div>
+    <div class="mm-cat-filter" id="mm-cat-filter"></div>
+    <div class="mm-card" id="mm-card">
+      <div class="mm-cat" id="mm-qcat"></div>
+      <div class="mm-question" id="mm-q"></div>
+      <div class="mm-timer" id="mm-timer" style="color:#60a5fa;">0:30</div>
+      <div class="mm-answer-box" id="mm-answer-box">
+        <div class="mm-answer-label">✓ ANSWER</div>
+        <div class="mm-answer-text" id="mm-answer"></div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid #1e3a5f;">
+          <div style="font-size:11px;color:#c9a84c;font-weight:700;letter-spacing:.1em;margin-bottom:8px;">STEP-BY-STEP BREAKDOWN</div>
+          <div id="mm-steps"></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;" id="mm-buttons">
+        <button class="btn-gold" onclick="revealMM()">Reveal Answer</button>
+        <button class="btn-ghost" onclick="nextMM()">Skip →</button>
+      </div>
+      <div style="display:none;justify-content:center;gap:10px;flex-wrap:wrap;" id="mm-rate-buttons">
+        <button class="btn-hard" onclick="rateMM(false)">✗ Got It Wrong</button>
+        <button class="btn-easy" onclick="rateMM(true)">✓ Got It Right</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resume Reviewer -->
+  <div id="drill-resume" style="display:none;" class="resume-area">
+    <p class="muted" style="font-size:13px;margin-bottom:16px;line-height:1.6;">Paste a resume bullet below. The tool generates a Claude.ai prompt that evaluates it on the five criteria IB recruiters actually care about: action verb, quantification, finance signal, specificity, and conciseness.</p>
+    <div class="card" style="padding:18px;margin-bottom:14px;">
+      <label style="font-size:11px;color:#64748b;font-weight:700;letter-spacing:.1em;display:block;margin-bottom:8px;">YOUR BULLET POINT</label>
+      <textarea id="resume-bullet" rows="3" placeholder="e.g. Built a DCF model for IBM using a 7.0% WACC and 14x terminal multiple, arriving at an implied share price of ~$276, a 12% premium to market..." oninput="onBulletChange()"></textarea>
+    </div>
+    <div class="step-label"><span class="step-num">1</span>COPY THIS PROMPT → PASTE INTO CLAUDE.AI</div>
+    <div class="card" style="padding:16px;margin-bottom:14px;">
+      <p class="muted" style="font-size:12px;margin-bottom:10px;line-height:1.6;">Claude will score your bullet on 5 criteria and rewrite it at an interview-ready level.</p>
+      <textarea id="resume-prompt" readonly rows="8" style="margin-bottom:10px;"></textarea>
+      <div class="row">
+        <button class="btn-gold ai-only" id="resume-ai-grade-btn" onclick="gradeResumeWithAI()" disabled style="display:none;">⚡ Grade with AI</button>
+        <button class="btn-gold" id="resume-copy-btn" onclick="copyResume()" disabled>Copy Review Prompt</button>
+        <button class="btn-blue" onclick="window.open('https://claude.ai/new','_blank')">Open Claude.ai →</button>
+        <span class="copy-ok" id="resume-copy-ok">✓ Copied!</span>
+      </div>
+    </div>
+    <div style="background:#0a1128;border:1px solid #1e3a5f;border-radius:10px;padding:16px;margin-top:4px;">
+      <p class="section-label" style="margin-bottom:10px;">WHAT GETS EVALUATED</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div style="font-size:12px;color:#94a3b8;padding:8px 10px;background:#070d1a;border-radius:6px;"><span style="color:#c9a84c;font-weight:700;">① Action Verb</span> — Does it start strong? (Built, Analyzed, Modeled — not "Helped" or "Assisted")</div>
+        <div style="font-size:12px;color:#94a3b8;padding:8px 10px;background:#070d1a;border-radius:6px;"><span style="color:#c9a84c;font-weight:700;">② Quantification</span> — Is there a number? ($, %, x multiple, basis points)</div>
+        <div style="font-size:12px;color:#94a3b8;padding:8px 10px;background:#070d1a;border-radius:6px;"><span style="color:#c9a84c;font-weight:700;">③ Finance Signal</span> — Does it use IB vocabulary correctly? (WACC, EV, MOIC, DCF, etc.)</div>
+        <div style="font-size:12px;color:#94a3b8;padding:8px 10px;background:#070d1a;border-radius:6px;"><span style="color:#c9a84c;font-weight:700;">④ Specificity</span> — Is it tied to a real company, deal, or output?</div>
+        <div style="font-size:12px;color:#94a3b8;padding:8px 10px;background:#070d1a;border-radius:6px;"><span style="color:#c9a84c;font-weight:700;">⑤ Conciseness</span> — Under 2 lines? Does every word earn its place?</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+// ===== DATA =====
+
+const QUESTIONS = {
+  behavioral:[
+    {id:1,q:"Walk me through your resume.",d:"Easy",cat:"Behavioral"},
+    {id:2,q:"Why investment banking — and why not consulting or corporate finance?",d:"Easy",cat:"Behavioral"},
+    {id:3,q:"Why this bank specifically? What do you know about us?",d:"Easy",cat:"Behavioral"},
+    {id:4,q:"Tell me about a time you worked under significant pressure with a tight deadline.",d:"Medium",cat:"Behavioral"},
+    {id:5,q:"Walk me through a deal, investment, or business situation you've analyzed recently.",d:"Medium",cat:"Behavioral"},
+    {id:6,q:"Where do you see yourself in 10 years?",d:"Easy",cat:"Behavioral"},
+    {id:7,q:"Tell me about a time you had a conflict with a teammate. How did you resolve it?",d:"Medium",cat:"Behavioral"},
+    {id:8,q:"What is your greatest weakness? How are you addressing it?",d:"Easy",cat:"Behavioral"},
+    {id:9,q:"Tell me about a time you failed. What did you learn?",d:"Medium",cat:"Behavioral"},
+    {id:10,q:"Why should we hire you over other candidates with similar backgrounds?",d:"Medium",cat:"Behavioral"},
+    {id:11,q:"What qualities make a successful investment banker?",d:"Medium",cat:"Behavioral"},
+    {id:12,q:"Tell me about a current event in the markets that interests you and why.",d:"Hard",cat:"Behavioral"},
+    {id:13,q:"Walk me through a time you had to persuade someone to adopt your point of view.",d:"Medium",cat:"Behavioral"},
+    {id:14,q:"What do you do outside of school or work?",d:"Easy",cat:"Behavioral"},
+    {id:15,q:"Do you have any questions for us?",d:"Easy",cat:"Behavioral"},
+  ],
+  accounting:[
+    {id:16,q:"Walk me through the three financial statements.",d:"Easy",cat:"Accounting"},
+    {id:17,q:"If D&A increases by $10, walk me through the impact on all three statements.",d:"Medium",cat:"Accounting"},
+    {id:18,q:"What is working capital? How does a change in working capital affect cash flow?",d:"Medium",cat:"Accounting"},
+    {id:19,q:"A company has $100M revenue, 40% gross margin, 20% EBITDA margin, $10M D&A. What is net income at a 30% tax rate with no interest expense?",d:"Hard",cat:"Accounting"},
+    {id:20,q:"How do you get from net income to free cash flow?",d:"Medium",cat:"Accounting"},
+    {id:21,q:"What is deferred revenue and how does it flow through the financial statements?",d:"Hard",cat:"Accounting"},
+    {id:22,q:"What happens to the three statements if a company raises $100M in debt?",d:"Medium",cat:"Accounting"},
+    {id:23,q:"What happens to the three statements if inventory increases by $10M?",d:"Medium",cat:"Accounting"},
+    {id:24,q:"What is the difference between cash and accrual accounting?",d:"Easy",cat:"Accounting"},
+    {id:25,q:"What is EBITDA and why is it used as a valuation metric?",d:"Easy",cat:"Accounting"},
+    {id:26,q:"What is the difference between gross profit, EBITDA, EBIT, and net income?",d:"Medium",cat:"Accounting"},
+    {id:27,q:"What is goodwill impairment and how does it flow through the statements?",d:"Hard",cat:"Accounting"},
+    {id:28,q:"What happens to the three statements when a company buys a piece of equipment for $50M cash?",d:"Medium",cat:"Accounting"},
+    {id:29,q:"Walk me through what happens to the statements if a company writes off $20M of inventory.",d:"Hard",cat:"Accounting"},
+    {id:30,q:"What is the difference between a capital expenditure and an operating expense?",d:"Easy",cat:"Accounting"},
+    {id:31,q:"How does accounts receivable affect cash flow?",d:"Medium",cat:"Accounting"},
+    {id:32,q:"What is depreciation and why do we add it back on the cash flow statement?",d:"Easy",cat:"Accounting"},
+    {id:33,q:"What is normalized EBITDA and why do bankers use it in valuation?",d:"Medium",cat:"Accounting"},
+    {id:34,q:"What is a deferred tax asset vs. a deferred tax liability?",d:"Hard",cat:"Accounting"},
+    {id:35,q:"If a company switches from LIFO to FIFO in a rising price environment, how does it affect the financial statements?",d:"Hard",cat:"Accounting"},
+  ],
+  valuation:[
+    {id:36,q:"Walk me through a DCF.",d:"Medium",cat:"Valuation"},
+    {id:37,q:"What is the difference between Enterprise Value and Equity Value?",d:"Easy",cat:"Valuation"},
+    {id:38,q:"When would you use comparable company analysis vs. precedent transactions?",d:"Medium",cat:"Valuation"},
+    {id:39,q:"What are the primary valuation methodologies and when would you use each?",d:"Medium",cat:"Valuation"},
+    {id:40,q:"What makes WACC go up or down? Walk me through each component.",d:"Hard",cat:"Valuation"},
+    {id:41,q:"If you had to value a company with no revenue and no EBITDA, how would you approach it?",d:"Hard",cat:"Valuation"},
+    {id:42,q:"What is terminal value and how do you calculate it? Which method do you prefer?",d:"Medium",cat:"Valuation"},
+    {id:43,q:"Why might a DCF give a different valuation than trading comps?",d:"Medium",cat:"Valuation"},
+    {id:44,q:"What is beta? How do you unlever and relever it?",d:"Hard",cat:"Valuation"},
+    {id:45,q:"How do you select comparable companies for a comps analysis?",d:"Medium",cat:"Valuation"},
+    {id:46,q:"Why do precedent transactions typically trade at a premium to comparable companies?",d:"Medium",cat:"Valuation"},
+    {id:47,q:"If WACC increases by 1%, what directional impact does it have on DCF valuation?",d:"Hard",cat:"Valuation"},
+    {id:48,q:"What multiples would you use to value a commercial bank? Why can't you use EV/EBITDA?",d:"Hard",cat:"Valuation"},
+    {id:49,q:"How do you value a pre-revenue startup?",d:"Hard",cat:"Valuation"},
+    {id:50,q:"What is the difference between trailing and forward multiples? When would you use each?",d:"Medium",cat:"Valuation"},
+    {id:51,q:"Walk me through what a football field chart is and what it shows.",d:"Easy",cat:"Valuation"},
+    {id:52,q:"When would you NOT use a DCF?",d:"Medium",cat:"Valuation"},
+    {id:53,q:"What is a sum-of-the-parts (SOTP) valuation and when do you use it?",d:"Medium",cat:"Valuation"},
+    {id:54,q:"How does the terminal growth rate assumption affect DCF valuation? What's a reasonable range?",d:"Hard",cat:"Valuation"},
+    {id:55,q:"What is the equity risk premium and how is it typically estimated?",d:"Hard",cat:"Valuation"},
+  ],
+  ma:[
+    {id:56,q:"Walk me through an accretion/dilution analysis.",d:"Hard",cat:"M&A"},
+    {id:57,q:"What are synergies in M&A? Give examples of cost and revenue synergies.",d:"Easy",cat:"M&A"},
+    {id:58,q:"When is a stock deal preferable to a cash deal for the acquirer?",d:"Medium",cat:"M&A"},
+    {id:59,q:"What is purchase price allocation (PPA) and why does it matter?",d:"Hard",cat:"M&A"},
+    {id:60,q:"What is goodwill and how is it created in an acquisition?",d:"Medium",cat:"M&A"},
+    {id:61,q:"Walk me through the M&A process from origination to close.",d:"Medium",cat:"M&A"},
+    {id:62,q:"What is a hostile takeover and what are the most common defense mechanisms?",d:"Medium",cat:"M&A"},
+    {id:63,q:"What are the tax implications of a stock deal vs. a cash deal?",d:"Hard",cat:"M&A"},
+    {id:64,q:"What is a break-up fee (termination fee) and why is it included?",d:"Medium",cat:"M&A"},
+    {id:65,q:"How does an acquisition affect the acquirer's balance sheet on day one?",d:"Hard",cat:"M&A"},
+    {id:66,q:"What is an earnout and when would a buyer use one?",d:"Medium",cat:"M&A"},
+    {id:67,q:"How do you determine the appropriate purchase price in an M&A deal?",d:"Hard",cat:"M&A"},
+    {id:68,q:"What is a fairness opinion and why is it required?",d:"Medium",cat:"M&A"},
+    {id:69,q:"What is a reverse merger and why would a private company pursue one?",d:"Hard",cat:"M&A"},
+    {id:70,q:"If a deal is 100% stock-financed and the acquirer's P/E is lower than the target's P/E, is the deal accretive or dilutive?",d:"Hard",cat:"M&A"},
+  ],
+  lbo:[
+    {id:71,q:"Walk me through an LBO model from start to finish.",d:"Medium",cat:"LBO"},
+    {id:72,q:"What are the primary drivers of returns in an LBO?",d:"Medium",cat:"LBO"},
+    {id:73,q:"What makes a good LBO candidate?",d:"Easy",cat:"LBO"},
+    {id:74,q:"Explain the difference between MOIC and IRR. Which do PE firms prefer and why?",d:"Medium",cat:"LBO"},
+    {id:75,q:"A PE firm buys a company at 8x EBITDA with 60% debt, operates for 5 years, and exits at 8x EBITDA. What drives returns?",d:"Hard",cat:"LBO"},
+    {id:76,q:"What is a dividend recapitalization and what are its pros and cons?",d:"Hard",cat:"LBO"},
+    {id:77,q:"What is PIK debt and when is it used in an LBO capital structure?",d:"Hard",cat:"LBO"},
+    {id:78,q:"How does increasing leverage affect equity returns in an LBO?",d:"Medium",cat:"LBO"},
+    {id:79,q:"What is a management buyout (MBO) and how does it differ from a standard LBO?",d:"Medium",cat:"LBO"},
+    {id:80,q:"How do you build a debt schedule in an LBO model?",d:"Hard",cat:"LBO"},
+    {id:81,q:"What EBITDA purchase multiple would you pay in an LBO? How do you think about max leverage?",d:"Hard",cat:"LBO"},
+    {id:82,q:"What is the J-curve in private equity and why does it occur?",d:"Medium",cat:"LBO"},
+    {id:83,q:"How do you roughly estimate IRR without a spreadsheet?",d:"Hard",cat:"LBO"},
+    {id:84,q:"What is a secondary buyout and why are they common in PE?",d:"Medium",cat:"LBO"},
+    {id:85,q:"How does PE fund economics work — management fees, carried interest, hurdle rate?",d:"Medium",cat:"LBO"},
+  ],
+  markets:[
+    {id:86,q:"Pitch me a stock — give me a long or short thesis.",d:"Hard",cat:"Markets"},
+    {id:87,q:"What is the yield curve and why does it matter to investment bankers?",d:"Medium",cat:"Markets"},
+    {id:88,q:"What happens to bond prices when interest rates rise?",d:"Easy",cat:"Markets"},
+    {id:89,q:"How does the Fed funds rate affect equity valuations? Walk me through the mechanism.",d:"Hard",cat:"Markets"},
+    {id:90,q:"What is the difference between investment grade and high yield bonds?",d:"Easy",cat:"Markets"},
+    {id:91,q:"What is a credit default swap (CDS) and how does it work?",d:"Medium",cat:"Markets"},
+    {id:92,q:"What's your view on current M&A market conditions and what's driving deal activity?",d:"Hard",cat:"Markets"},
+    {id:93,q:"Name a sector you're bullish on right now and walk me through your thesis.",d:"Hard",cat:"Markets"},
+    {id:94,q:"What is duration and why does it matter to bond investors?",d:"Medium",cat:"Markets"},
+    {id:95,q:"What is quantitative easing and how does it affect asset prices?",d:"Medium",cat:"Markets"},
+    {id:96,q:"Walk me through what happens in leveraged loan markets when credit spreads widen.",d:"Hard",cat:"Markets"},
+    {id:97,q:"Estimate the number of golf balls that fit in a 747 airplane. Walk me through your logic.",d:"Hard",cat:"Markets"},
+    {id:98,q:"You have a 3-gallon jug and a 5-gallon jug. How do you measure exactly 4 gallons?",d:"Hard",cat:"Markets"},
+    {id:99,q:"What is 17 × 18 and how did you get there without a calculator?",d:"Medium",cat:"Markets"},
+    {id:100,q:"If I gave you $1 million to invest today, what would you do with it and why?",d:"Hard",cat:"Markets"},
+  ]
+};
+
+const CAT_META = {
+  behavioral:{label:"Behavioral",icon:"🎯"},
+  accounting:{label:"Accounting",icon:"📊"},
+  valuation:{label:"Valuation",icon:"💹"},
+  ma:{label:"M&A",icon:"🤝"},
+  lbo:{label:"LBO",icon:"🏦"},
+  markets:{label:"Markets",icon:"📈"},
+};
+
+const FLASHCARDS = [
+  // Accounting
+  {id:"f1",q:"What are the three financial statements?",a:"Income Statement (revenue → net income over a period), Balance Sheet (assets = liabilities + equity, snapshot in time), and Cash Flow Statement (operating, investing, financing — bridges net income to actual cash).",cat:"Accounting"},
+  {id:"f2",q:"How do the three statements link?",a:"Net income flows from the IS into retained earnings on the BS. Net income is also the starting point of the CFS. Ending cash on the CFS ties to the cash line on the BS.",cat:"Accounting"},
+  {id:"f3",q:"D&A increases $10 — impact on all three statements?",a:"IS: Pre-tax income ↓$10, tax savings $4, net income ↓$6. BS: PP&E ↓$10, retained earnings ↓$6, cash ↑$4 (tax shield). CFS: Net income ↓$6, add back D&A +$10, so OCF ↑$4.",cat:"Accounting"},
+  {id:"f4",q:"What is EBITDA?",a:"Earnings Before Interest, Taxes, D&A. A proxy for operating cash flow before capex. Used in valuation (EV/EBITDA) because it's capital structure and tax neutral, making cross-company comparison easier.",cat:"Accounting"},
+  {id:"f5",q:"Net income → Free Cash Flow. Walk through it.",a:"Start with net income. Add back D&A (non-cash). Adjust for changes in net working capital (increase = outflow). Subtract CapEx. Result = unlevered free cash flow.",cat:"Accounting"},
+  {id:"f6",q:"What is working capital?",a:"Current assets minus current liabilities. An increase in working capital is a cash outflow (you're tying up more cash). Key items: accounts receivable, inventory (assets), accounts payable (liability).",cat:"Accounting"},
+  {id:"f7",q:"What is deferred revenue?",a:"Cash received before a service is delivered — a liability on the balance sheet. As the company earns the revenue, the liability decreases and revenue is recognized on the income statement.",cat:"Accounting"},
+  {id:"f8",q:"Cash vs. accrual accounting?",a:"Accrual records revenue when earned and expenses when incurred, regardless of cash timing. Cash accounting records when cash actually changes hands. GAAP requires accrual for public companies.",cat:"Accounting"},
+  {id:"f9",q:"What is goodwill?",a:"The excess of purchase price over the fair value of net identifiable assets in an acquisition. Represents brand, customer relationships, synergies. Under US GAAP, goodwill is not amortized — it's tested annually for impairment.",cat:"Accounting"},
+  {id:"f10",q:"CapEx vs. operating expense — key difference?",a:"CapEx is capitalized on the balance sheet and depreciated over time (PP&E). An operating expense hits the income statement immediately in full. CapEx appears as a cash outflow in investing activities on the CFS.",cat:"Accounting"},
+  // Valuation
+  {id:"f11",q:"Three core valuation methodologies?",a:"(1) DCF — intrinsic value based on PV of future FCFs, (2) Trading Comps — EV multiples from public peer companies, (3) Precedent Transactions — acquisition multiples from prior M&A deals. DCF = most theoretical; precedents include a control premium.",cat:"Valuation"},
+  {id:"f12",q:"Enterprise Value vs. Equity Value?",a:"EV = Equity Value + Debt + Preferred + Minority Interest – Cash. EV belongs to all capital providers; Equity Value belongs only to common shareholders. Use EV/EBITDA for operations, P/E for shareholders.",cat:"Valuation"},
+  {id:"f13",q:"Walk me through a DCF in one paragraph.",a:"Project unlevered FCF for 5–10 years. Calculate terminal value using Gordon Growth (FCF×(1+g)/(WACC–g)) or exit multiple. Discount all cash flows back at WACC to get Enterprise Value. Subtract net debt for Equity Value, divide by diluted shares for implied price.",cat:"Valuation"},
+  {id:"f14",q:"What is WACC?",a:"Weighted average cost of capital — the blended required return across all capital providers. WACC = (E/V)×Ke + (D/V)×Kd×(1–t). Equity cost via CAPM; debt cost is tax-deductible. Higher WACC = lower DCF value.",cat:"Valuation"},
+  {id:"f15",q:"Terminal value — two methods?",a:"(1) Gordon Growth: TV = FCF×(1+g)/(WACC–g) — assumes perpetual growth. (2) Exit Multiple: TV = EBITDA × multiple. Terminal value typically represents 60–80% of total DCF value, so assumptions here are critical.",cat:"Valuation"},
+  {id:"f16",q:"When would you NOT use a DCF?",a:"When FCFs are unpredictable (early-stage companies, highly cyclical businesses), when the company has no clear path to earnings, or when terminal value assumptions are so sensitive they make the model unreliable.",cat:"Valuation"},
+  {id:"f17",q:"What is beta?",a:"A measure of a stock's volatility vs. the market. Beta >1 = more volatile. In CAPM: Ke = Rf + β(Rm–Rf). You unlever a comp's beta to strip out its capital structure, then relever it using the subject company's capital structure.",cat:"Valuation"},
+  {id:"f18",q:"Why do precedent transactions trade at a premium to comps?",a:"Because acquirers pay a control premium — typically 20–30% above market price — to gain full operational control of the business and capture synergies. This premium compensates existing shareholders for giving up control.",cat:"Valuation"},
+  {id:"f19",q:"Trailing vs. forward multiples?",a:"Trailing uses last twelve months (LTM) actuals — more conservative, less susceptible to rosy projections. Forward uses next twelve months estimates — better for fast-growing companies. Use both; flag when they diverge significantly.",cat:"Valuation"},
+  {id:"f20",q:"What is a football field chart?",a:"A summary valuation output showing a range of implied values under each methodology (DCF, comps, precedents) displayed as horizontal bars — like a football field. Allows bankers and clients to see valuation from multiple angles simultaneously.",cat:"Valuation"},
+  // M&A
+  {id:"f21",q:"Accretion vs. dilution — what drives it?",a:"A deal is accretive if EPS increases post-close, dilutive if it falls. Key driver: compare target earnings yield (EPS/Price) to acquirer's cost of financing. If target earnings yield > financing cost, it's accretive. Cash deals are typically more accretive than stock.",cat:"M&A"},
+  {id:"f22",q:"Cost synergies vs. revenue synergies?",a:"Cost: headcount reduction, facility consolidation, procurement savings — more certain, given more credit by markets. Revenue: cross-selling, new markets, expanded distribution — harder to achieve, given less credit. Bankers typically only model cost synergies.",cat:"M&A"},
+  {id:"f23",q:"What is purchase price allocation (PPA)?",a:"Post-acquisition, the purchase price is allocated to the fair value of net identifiable assets. Any excess becomes goodwill. Intangibles identified in PPA (customer lists, patents) are amortized, reducing GAAP earnings post-close.",cat:"M&A"},
+  {id:"f24",q:"Stock deal vs. cash deal — key tradeoffs?",a:"Cash: seller gets certainty; taxable event immediately. Stock: seller participates in upside; buyer can use overvalued stock as currency; not immediately taxable. Stock deals are typically more dilutive to the acquirer's EPS.",cat:"M&A"},
+  {id:"f25",q:"What is a fairness opinion?",a:"A formal assessment by an investment bank that the financial terms of a transaction are fair, from a financial point of view, to shareholders. Required for major transactions and when there's a conflict of interest (e.g., management buyout).",cat:"M&A"},
+  {id:"f26",q:"What is an earnout?",a:"A contingent payment in an acquisition where the seller receives additional consideration if the business hits certain financial targets post-close. Used when buyer and seller disagree on value or future performance. Bridges valuation gaps.",cat:"M&A"},
+  // LBO
+  {id:"f27",q:"What is an LBO?",a:"A leveraged buyout — a PE firm acquires a company using primarily debt (60–70% of purchase price). The target's own cash flows service the debt. PE uses minimal equity to maximize returns on that equity at exit.",cat:"LBO"},
+  {id:"f28",q:"What makes a good LBO candidate?",a:"Stable/predictable cash flows to service debt, strong market position, low existing leverage, hard assets for collateral, room for operational improvement, and a clear exit path via strategic buyer or IPO.",cat:"LBO"},
+  {id:"f29",q:"Three drivers of LBO returns?",a:"(1) EBITDA growth — improve operations to grow earnings, (2) Multiple expansion — buy at 7x, sell at 9x, (3) Debt paydown — every dollar of debt paid down with FCF becomes equity at exit. Leverage amplifies returns in both directions.",cat:"LBO"},
+  {id:"f30",q:"MOIC vs. IRR?",a:"MOIC = Exit Equity / Entry Equity (how many times your money, ignores time). IRR = annualized return (time-sensitive). A 2x MOIC in 2 years (IRR ~41%) beats 2x in 5 years (IRR ~15%). PE firms track both — IRR matters for fund performance.",cat:"LBO"},
+  {id:"f31",q:"What is a dividend recap?",a:"The portfolio company takes on additional debt post-acquisition, and the proceeds are paid out as a dividend to the PE firm before exit. Allows early capital return to LPs without selling. Increases leverage and risk for the company.",cat:"LBO"},
+  {id:"f32",q:"What is PIK debt?",a:"Payment-In-Kind — interest is paid by issuing additional debt rather than cash. Used when a company has limited near-term cash flow. Allows the company to preserve cash but compounds the debt balance, increasing exit risk.",cat:"LBO"},
+  {id:"f33",q:"J-curve in private equity?",a:"The pattern where a PE fund shows negative returns early (due to management fees and early investments with no exits yet) before turning positive as portfolio companies mature and exits are realized. Typically 3–5 years negative before turning up.",cat:"LBO"},
+  // Markets
+  {id:"f34",q:"Bonds and interest rates — relationship?",a:"Inverse. When interest rates rise, existing bonds with lower coupons become less attractive, so their prices fall to push yields up to match the market rate. Duration measures how sensitive a bond's price is to rate changes.",cat:"Markets"},
+  {id:"f35",q:"What is the yield curve?",a:"A plot of yields across maturities (3-month to 30-year). Normally upward-sloping — longer duration = higher yield for more risk. An inverted yield curve (short rates > long rates) has historically predicted recessions.",cat:"Markets"},
+  {id:"f36",q:"How does the Fed funds rate affect equity valuations?",a:"Higher rates → higher WACC → lower DCF values. Also: bonds become more attractive vs. equities, compressing P/E multiples. Growth stocks are hit hardest since more of their value lies in distant future cash flows.",cat:"Markets"},
+  {id:"f37",q:"Investment grade vs. high yield?",a:"Investment grade (BBB-/Baa3 and above) is issued by financially strong companies with low default risk. High yield (below BBB-) has higher default risk and higher coupons. Also called 'junk bonds.' Different investor bases and covenant structures.",cat:"Markets"},
+  {id:"f38",q:"What is a credit default swap (CDS)?",a:"A derivative that acts like insurance on debt. The buyer pays a periodic premium; the seller compensates the buyer if the reference entity defaults. CDS spreads widen when credit quality deteriorates — a leading indicator of stress.",cat:"Markets"},
+  // Behavioral
+  {id:"f39",q:"Why investment banking — what's a strong answer structure?",a:"Cover: (1) passion for transactions and markets, (2) specific interest in the analytical work — modeling, valuation, (3) desire for a steep learning curve early in your career, (4) how it connects to your long-term goals (PE, corp dev, etc.). Be specific — name deals or experiences.",cat:"Behavioral"},
+  {id:"f40",q:"Greatest weakness — how to answer it?",a:"Be genuine but strategic. Pick a real weakness you've actively worked to improve. Avoid clichés ('I work too hard'). Show self-awareness and describe concrete steps you've taken. End on a growth trajectory, not a problem statement.",cat:"Behavioral"},
+];
+
+const CONCEPTS = [
+  {title:"Walking Through a DCF",tag:"Valuation",body:"Project unlevered FCF (EBIT×(1–t)+D&A–ΔWC–CapEx) for 5–10 years. Calculate terminal value via Gordon Growth (FCF×(1+g)/(WACC–g)) or exit multiple. Discount all cash flows at WACC to get Enterprise Value. Subtract net debt for Equity Value, divide by diluted shares for implied price. Terminal value typically represents 60–80% of total value.",formula:"EV = Σ[FCF/(1+WACC)^t] + TV/(1+WACC)^n"},
+  {title:"Enterprise Value vs. Equity Value",tag:"Valuation",body:"EV belongs to all capital providers — debt, equity, preferred. Equity Value belongs only to common shareholders. Bridge: EV = Market Cap + Debt + Preferred + Minority Interest – Cash. Use EV multiples (EV/EBITDA) for operational comparisons; equity multiples (P/E) for shareholder returns.",formula:"EV = Market Cap + Debt + Preferred + Minority Interest – Cash"},
+  {title:"Three Statements & How They Link",tag:"Accounting",body:"Income Statement: revenue to net income over a period. Net income flows into retained earnings on the Balance Sheet. Cash Flow Statement starts with net income, adjusts for non-cash items (D&A), working capital changes, CapEx, and financing to get ending cash — which ties to the BS cash balance.",formula:"Net Income → Retained Earnings (B/S) and CFS starting line"},
+  {title:"D&A +$10: Full Statement Impact",tag:"Accounting",body:"IS: D&A ↑$10 → pre-tax ↓$10 → tax savings $4 (40%) → net income ↓$6. BS: PP&E ↓$10 (accumulated D&A), retained earnings ↓$6, cash ↑$4 (tax shield). CFS: net income ↓$6, add back D&A +$10, so OCF ↑$4. Remember: D&A is non-cash — it reduces accounting income but saves taxes.",formula:"Net Income ↓$6 | OCF ↑$4 | PP&E ↓$10"},
+  {title:"LBO Mechanics & Return Drivers",tag:"LBO",body:"PE firm buys company using ~60% debt. Target's FCF services the debt. Three return levers: (1) EBITDA growth, (2) multiple expansion (buy 7x sell 9x), (3) debt paydown — deleveraging converts to equity. Leverage amplifies both upside and downside. Hold period typically 3–7 years.",formula:"MOIC = Exit Equity / Entry Equity  |  IRR solves: Entry = Exit/(1+r)^n"},
+  {title:"Accretion / Dilution in M&A",tag:"M&A",body:"Accretive if acquirer's EPS increases post-close; dilutive if EPS falls. Key test: compare target earnings yield (EPS/price) to cost of financing. Earnings yield > cost of financing → accretive. Stock deals are typically more dilutive. 100% cash deals funded with cheap debt are most likely accretive.",formula:"Accretive if: Target P/E < Acquirer P/E (for stock deals)"},
+  {title:"WACC Formula & Components",tag:"Valuation",body:"WACC is the blended cost of capital weighted by proportions in the structure. Equity cost uses CAPM: Ke = Rf + β(Rm–Rf). Debt cost is tax-deductible. A higher WACC = lower DCF value. Adding leverage typically lowers WACC (tax shield benefit) until financial distress risk offsets it.",formula:"WACC = (E/V)×Ke + (D/V)×Kd×(1–t)"},
+  {title:"Free Cash Flow to Firm (FCFF)",tag:"Accounting",body:"FCFF is unlevered cash flow — it ignores capital structure and belongs to all capital providers. This makes it the correct input for a DCF. Start with EBIT, tax-affect it, add D&A, subtract CapEx and changes in net working capital. Unlike net income, it is not distorted by financing decisions.",formula:"FCFF = EBIT(1–t) + D&A – ΔNWC – CapEx"},
+];
+
+// ===== STATE =====
+let history = [];
+let currentQ = null;
+let currentCat = null;
+// Flashcard state
+let fcCat = null;
+let fcDeck = [];
+let fcIdx = 0;
+let fcFlipped = false;
+let fcMastered = new Set();
+let fcHard = new Set();
+// Mock state
+let mockQs=[], mockIdx=0, mockResults=[], mockTimerInterval=null, mockTimeLeft=90;
+
+// ===== UTILS =====
+function sc(s){return s>=8?'#4ade80':s>=5?'#fbbf24':'#f87171';}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function copyText(text,okId){
+  const done=()=>{const e=document.getElementById(okId);if(e){e.style.display='inline';setTimeout(()=>e.style.display='none',2000);}};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(()=>fb(text,done));}
+  else fb(text,done);
+}
+function fb(text,done){const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+function buildPrompt(q,a,cat){
+  return `You are a senior investment banking analyst at a bulge bracket bank evaluating a first-round candidate. Be direct and honest.
+
+Question (${cat}): "${q}"
+My answer: "${a||'(no answer given)'}"
+
+Start your response with exactly this first line, nothing before it: "SCORE: X/10" (replace X with your integer score). Then a blank line, then:
+1. What I got right (strengths)
+2. What I missed or got wrong (improvements)
+3. A model answer I should be able to give
+4. One likely follow-up question
+
+Be specific — don't sugarcoat it.`;}
+function parseScoreFromText(text){
+  const m=text&&text.match(/SCORE:\s*(\d{1,2})\s*\/\s*10/i);
+  if(!m) return null;
+  const v=parseInt(m[1],10);
+  return (v>=1&&v<=10)?v:null;
+}
+function updateCount(){document.getElementById('nav-count').textContent=history.length+' practiced';}
+
+// ===== READINESS + WEAKNESS =====
+function updateDashboard(){
+  const pct = computeReadiness();
+  document.getElementById('readiness-pct').textContent = pct+'%';
+  document.getElementById('readiness-bar').style.width = pct+'%';
+  document.getElementById('readiness-pct').style.color = sc(pct/10);
+  document.getElementById('readiness-msg').textContent = pct===0?'Answer questions and log scores to build your readiness score.':pct<40?'Just getting started — keep drilling.':pct<70?'Building solid foundations — focus on your weak areas.':pct<90?'Strong progress — tighten up the gaps.':'Interview-ready. Keep your edge sharp.';
+  renderWeaknessBadges();
+}
+function computeReadiness(){
+  if(!history.length) return 0;
+  const avg = history.reduce((s,h)=>s+h.score,0)/history.length;
+  const coverage = Math.min(history.length/20,1);
+  return Math.round((avg/10)*coverage*100);
+}
+function renderWeaknessBadges(){
+  const el = document.getElementById('weakness-badges');
+  const cats = Object.entries(CAT_META).map(([key,m])=>{
+    const items = history.filter(h=>h.cat===m.label);
+    const avg = items.length ? items.reduce((s,h)=>s+h.score,0)/items.length : null;
+    return {name:m.label,avg,count:items.length};
+  }).filter(c=>c.count>0);
+  if(!cats.length){el.innerHTML='<p class="muted" style="font-size:12px;">No data yet — practice to see your weak areas flagged here.</p>';return;}
+  el.innerHTML = cats.map(c=>{
+    const lvl = c.avg<5?'critical':c.avg<7?'high':'good';
+    const cls = lvl==='critical'?'badge-critical':lvl==='high'?'badge-high':'badge-good';
+    const label = lvl==='critical'?'⚠ CRITICAL':lvl==='high'?'↑ HIGH':'✓ GOOD';
+    return `<span class="${cls}">${label}: ${c.name} (${c.avg.toFixed(1)}/10)</span>`;
+  }).join('');
+}
+
+// ===== DAILY QUESTION =====
+function setupDailyQ(){
+  const allQs = Object.values(QUESTIONS).flat();
+  const idx = new Date().getDate() % allQs.length;
+  const q = allQs[idx];
+  window._dailyQ = q;
+  document.getElementById('daily-tags').innerHTML = `<span class="tag tag-blue">${esc(q.cat)}</span><span class="tag tag-${q.d.toLowerCase()}">${esc(q.d)}</span>`;
+  document.getElementById('daily-q').textContent = q.q;
+}
+function openDailyQ(){
+  if(window._dailyQ){currentQ=window._dailyQ;goTo('practice');openQuestion(window._dailyQ);}
+}
+
+// ===== NAVIGATION =====
+function goTo(page){
+  document.querySelectorAll('.page').forEach(p=>{p.classList.remove('active');p.style.display='none';});
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  const el = document.getElementById('page-'+page);
+  if(el){el.classList.add('active');el.style.display='block';}
+  const labels=['dash','practice','flash','mock','stories','drills','progress'];
+  const idx = labels.indexOf(page);
+  if(idx>=0) document.querySelectorAll('.nav-btn')[idx].classList.add('active');
+  if(page==='dash'){updateDashboard();}
+  if(page==='practice'){renderPracticeList();}
+  if(page==='flash'){renderFlashCards();}
+  if(page==='stories'){renderStories();}
+  if(page==='drills'){renderDrills();}
+  if(page==='progress'){renderProgress();}
+}
+
+// ===== PRACTICE =====
+function renderPracticeList(){
+  const pills=document.getElementById('cat-pills');
+  pills.innerHTML=`<button class="cat-pill ${!currentCat?'active':''}" onclick="filterCat(null)">All (${Object.values(QUESTIONS).flat().length})</button>`;
+  Object.entries(CAT_META).forEach(([key,m])=>{
+    pills.innerHTML+=`<button class="cat-pill ${currentCat===key?'active':''}" onclick="filterCat('${key}')">${m.icon} ${m.label} (${QUESTIONS[key].length})</button>`;
+  });
+  const list=document.getElementById('q-list');list.innerHTML='';
+  const qs=currentCat?QUESTIONS[currentCat]:Object.values(QUESTIONS).flat();
+  qs.forEach(q=>{
+    const div=document.createElement('div');div.className='q-row';
+    div.innerHTML=`<div style="flex:1"><div style="display:flex;gap:5px;margin-bottom:5px;flex-wrap:wrap;"><span class="tag tag-blue">${esc(q.cat)}</span><span class="tag tag-${q.d.toLowerCase()}">${esc(q.d)}</span></div><div class="q-text">${esc(q.q)}</div></div><span class="q-arrow">›</span>`;
+    div.onclick=()=>openQuestion(q);
+    list.appendChild(div);
+  });
+}
+function filterCat(cat){currentCat=cat;renderPracticeList();}
+function openQuestion(q){
+  currentQ=q;
+  document.getElementById('q-detail-tags').innerHTML=`<span class="tag tag-blue">${esc(q.cat)}</span><span class="tag tag-${q.d.toLowerCase()}">${esc(q.d)}</span>`;
+  document.getElementById('q-detail-text').textContent=q.q;
+  document.getElementById('user-answer').value='';
+  document.getElementById('generated-prompt').value='';
+  document.getElementById('copy-btn').disabled=true;
+  document.getElementById('ai-grade-btn').disabled=true;
+  document.getElementById('score-entry').value='';
+  document.getElementById('practice-list').style.display='none';
+  document.getElementById('practice-detail').style.display='block';
+}
+function showPracticeList(){
+  document.getElementById('practice-list').style.display='block';
+  document.getElementById('practice-detail').style.display='none';
+  renderPracticeList();
+}
+function onAnswerChange(){
+  const ans=document.getElementById('user-answer').value.trim();
+  const btn=document.getElementById('copy-btn');
+  const aiBtn=document.getElementById('ai-grade-btn');
+  if(ans){document.getElementById('generated-prompt').value=buildPrompt(currentQ.q,ans,currentQ.cat);btn.disabled=false;aiBtn.disabled=false;}
+  else{document.getElementById('generated-prompt').value='';btn.disabled=true;aiBtn.disabled=true;}
+}
+function copyPrompt(){copyText(document.getElementById('generated-prompt').value,'copy-ok');}
+async function gradeWithAI(){
+  const ans=document.getElementById('user-answer').value.trim();
+  if(!ans||!currentQ) return;
+  const text=await callAiInApp('⚡ AI Feedback: '+currentQ.cat, buildPrompt(currentQ.q,ans,currentQ.cat));
+  if(!text) return;
+  const score=parseScoreFromText(text);
+  if(score){document.getElementById('score-entry').value=score;saveScore();}
+}
+function saveScore(){
+  const val=parseInt(document.getElementById('score-entry').value,10);
+  if(!val||val<1||val>10){alert('Enter a score from 1 to 10.');return;}
+  history.push({cat:currentQ.cat,score:val,q:currentQ.q});
+  updateCount();updateDashboard();
+  document.getElementById('save-ok').style.display='inline';
+  setTimeout(()=>document.getElementById('save-ok').style.display='none',2000);
+  document.getElementById('score-entry').value='';
+}
+
+// ===== FLASHCARDS =====
+function buildFcDeck(){
+  let cards = fcCat ? FLASHCARDS.filter(c=>c.cat===fcCat) : [...FLASHCARDS];
+  // Put hard cards first, then unrated, mastered last
+  cards.sort((a,b)=>{
+    const aH=fcHard.has(a.id)?0:fcMastered.has(a.id)?2:1;
+    const bH=fcHard.has(b.id)?0:fcMastered.has(b.id)?2:1;
+    return aH-bH;
+  });
+  fcDeck=cards;fcIdx=0;
+}
+function renderFlashCards(){
+  // Cat filter
+  const el=document.getElementById('fc-cat-filter');
+  el.innerHTML=`<button class="cat-pill ${!fcCat?'active':''}" onclick="setFcCat(null)">All</button>`;
+  Object.entries(CAT_META).forEach(([key,m])=>{
+    const count=FLASHCARDS.filter(c=>c.cat===m.label).length;
+    if(count>0) el.innerHTML+=`<button class="cat-pill ${fcCat===m.label?'active':''}" onclick="setFcCat('${m.label}')">${m.icon} ${m.label}</button>`;
+  });
+  buildFcDeck();
+  updateFcStats();
+  showFcCard();
+}
+function setFcCat(cat){fcCat=cat;renderFlashCards();}
+function updateFcStats(){
+  const total=fcCat?FLASHCARDS.filter(c=>c.cat===fcCat).length:FLASHCARDS.length;
+  const mastered=[...fcMastered].filter(id=>!fcCat||FLASHCARDS.find(c=>c.id===id&&c.cat===fcCat)).length;
+  const hard=[...fcHard].filter(id=>!fcCat||FLASHCARDS.find(c=>c.id===id&&c.cat===fcCat)).length;
+  document.getElementById('fc-total').textContent=total;
+  document.getElementById('fc-mastered').textContent=mastered;
+  document.getElementById('fc-due').textContent=hard;
+}
+function showFcCard(){
+  document.getElementById('fc-done').style.display='none';
+  document.getElementById('fc-card-outer').style.display='block';
+  document.getElementById('fc-rating-area').style.display='none';
+  const nonMastered=fcDeck.filter(c=>!fcMastered.has(c.id));
+  if(!nonMastered.length){document.getElementById('fc-card-outer').style.display='none';document.getElementById('fc-done').style.display='block';return;}
+  // find next idx in nonMastered
+  const cur=nonMastered[fcIdx%nonMastered.length];
+  document.getElementById('fc-progress-text').textContent=`Card ${(fcIdx%nonMastered.length)+1} of ${nonMastered.length} remaining`;
+  document.getElementById('fc-card-tags').innerHTML=`<span class="tag tag-blue">${esc(cur.cat)}</span>${fcHard.has(cur.id)?'<span class="badge-critical" style="font-size:10px;padding:2px 8px;">Review</span>':''}`;
+  document.getElementById('fc-question').textContent=cur.q;
+  document.getElementById('fc-answer').textContent=cur.a;
+  document.getElementById('fc-hint').textContent='Tap card to reveal answer →';
+  // reset flip
+  const outer=document.getElementById('fc-card-outer');
+  outer.classList.remove('flipped');fcFlipped=false;
+  document.getElementById('fc-rating-area').style.display='none';
+}
+function flipCard(){
+  const outer=document.getElementById('fc-card-outer');
+  outer.classList.toggle('flipped');fcFlipped=!fcFlipped;
+  if(fcFlipped) document.getElementById('fc-rating-area').style.display='block';
+  else document.getElementById('fc-rating-area').style.display='none';
+}
+function rateCard(rating){
+  const nonMastered=fcDeck.filter(c=>!fcMastered.has(c.id));
+  const cur=nonMastered[fcIdx%nonMastered.length];
+  if(rating==='easy'){fcMastered.add(cur.id);fcHard.delete(cur.id);}
+  else if(rating==='hard'){fcHard.add(cur.id);}
+  else{fcHard.delete(cur.id);}
+  fcIdx++;updateFcStats();showFcCard();
+}
+function restartDeck(){fcHard.clear();fcIdx=0;buildFcDeck();showFcCard();}
+
+// ===== MOCK INTERVIEW =====
+function pick(arr,n){return[...arr].sort(()=>Math.random()-.5).slice(0,n);}
+function startMock(){
+  mockQs=[...pick(QUESTIONS.behavioral,2),...pick(QUESTIONS.accounting,1),...pick(QUESTIONS.valuation,1),...pick(Math.random()>.5?QUESTIONS.lbo:QUESTIONS.ma,1)];
+  mockIdx=0;mockResults=[];
+  document.getElementById('mock-idle').style.display='none';
+  document.getElementById('mock-active').style.display='block';
+  document.getElementById('mock-complete').style.display='none';
+  loadMockQ();
+}
+function loadMockQ(){
+  const q=mockQs[mockIdx];
+  document.getElementById('mock-q-num').textContent=mockIdx+1;
+  document.getElementById('mock-q-cat').textContent=q.cat.toUpperCase();
+  document.getElementById('mock-q-text').textContent=q.q;
+  document.getElementById('mock-answer').value='';
+  document.getElementById('mock-gen-prompt').value='';
+  document.getElementById('mock-copy-btn').disabled=true;
+  document.getElementById('mock-ai-grade-btn').disabled=true;
+  document.getElementById('mock-score').value='';
+  document.getElementById('mock-next-btn').textContent=mockIdx+1<mockQs.length?'Save & Continue →':'Save & See Results →';
+  renderMockDots();startMockTimer();
+}
+function renderMockDots(){
+  const el=document.getElementById('mock-dots');el.innerHTML='';
+  for(let i=0;i<5;i++){const d=document.createElement('div');d.className='mock-dot';d.style.background=i<mockIdx?'#c9a84c':i===mockIdx?'#60a5fa':'#1e3a5f';el.appendChild(d);}
+}
+function startMockTimer(){
+  clearInterval(mockTimerInterval);mockTimeLeft=90;updateTimerDisplay();
+  mockTimerInterval=setInterval(()=>{mockTimeLeft--;updateTimerDisplay();if(mockTimeLeft<=0)clearInterval(mockTimerInterval);},1000);
+}
+function updateTimerDisplay(){
+  const el=document.getElementById('mock-timer');
+  el.textContent=String(Math.floor(mockTimeLeft/60)).padStart(2,'0')+':'+String(mockTimeLeft%60).padStart(2,'0');
+  el.style.color=mockTimeLeft<=15?'#f87171':'#60a5fa';
+}
+function onMockAnswerChange(){
+  const ans=document.getElementById('mock-answer').value.trim();
+  const q=mockQs[mockIdx];const btn=document.getElementById('mock-copy-btn');
+  const aiBtn=document.getElementById('mock-ai-grade-btn');
+  if(ans){document.getElementById('mock-gen-prompt').value=buildPrompt(q.q,ans,q.cat);btn.disabled=false;aiBtn.disabled=false;}
+  else{document.getElementById('mock-gen-prompt').value='';btn.disabled=true;aiBtn.disabled=true;}
+}
+function copyMockPrompt(){copyText(document.getElementById('mock-gen-prompt').value,'mock-copy-ok');}
+async function gradeMockWithAI(){
+  const ans=document.getElementById('mock-answer').value.trim();
+  if(!ans) return;
+  const q=mockQs[mockIdx];
+  const text=await callAiInApp('⚡ AI Feedback: '+q.cat, buildPrompt(q.q,ans,q.cat));
+  if(!text) return;
+  const score=parseScoreFromText(text);
+  if(score){document.getElementById('mock-score').value=score;submitMockScore();}
+}
+function submitMockScore(){
+  const val=parseInt(document.getElementById('mock-score').value,10);
+  if(!val||val<1||val>10){alert('Enter the score Claude gave you (1–10).');return;}
+  clearInterval(mockTimerInterval);
+  const q=mockQs[mockIdx];
+  mockResults.push({question:q.q,category:q.cat,score:val});
+  if(mockIdx+1>=mockQs.length){
+    history.push(...mockResults.map(r=>({cat:r.category,score:r.score,q:r.question})));
+    updateCount();updateDashboard();showMockComplete();
+  } else {mockIdx++;loadMockQ();}
+}
+function showMockComplete(){
+  document.getElementById('mock-active').style.display='none';
+  document.getElementById('mock-complete').style.display='block';
+  const avg=(mockResults.reduce((s,r)=>s+r.score,0)/mockResults.length).toFixed(1);
+  const avgEl=document.getElementById('mock-avg');avgEl.textContent=avg;avgEl.style.color=sc(parseFloat(avg));
+  document.getElementById('mock-results').innerHTML=mockResults.map((r,i)=>`
+    <div class="card" style="padding:15px;margin-bottom:9px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div style="flex:1"><div style="font-size:11px;color:#64748b;font-weight:600;margin-bottom:3px;">Q${i+1} · ${esc(r.category)}</div><div style="font-size:13px;color:#cbd5e1;line-height:1.4;">${esc(r.question)}</div></div>
+        <div style="font-size:20px;font-weight:800;color:${sc(r.score)};margin-left:13px;flex-shrink:0;">${r.score}/10</div>
+      </div>
+    </div>`).join('');
+}
+function resetMock(){document.getElementById('mock-complete').style.display='none';document.getElementById('mock-idle').style.display='block';}
+
+// ===== PROGRESS =====
+function renderProgress(){
+  if(!history.length){document.getElementById('prog-empty').style.display='block';document.getElementById('prog-data').style.display='none';return;}
+  document.getElementById('prog-empty').style.display='none';document.getElementById('prog-data').style.display='block';
+  const avg=(history.reduce((s,h)=>s+h.score,0)/history.length).toFixed(1);
+  const readiness=computeReadiness();
+  const catData=Object.entries(CAT_META).map(([key,m])=>{
+    const items=history.filter(h=>h.cat===m.label);
+    return{name:m.label,icon:m.icon,score:items.length?Math.round(items.reduce((s,h)=>s+h.score,0)/items.length):0,count:items.length};
+  }).filter(c=>c.count>0);
+  const weakest=catData.length?[...catData].sort((a,b)=>a.score-b.score)[0]:null;
+  document.getElementById('stat-grid').innerHTML=`
+    <div class="stat-card" style="border-top:2px solid #c9a84c;"><div class="stat-value" style="color:#c9a84c;">${history.length}</div><div class="stat-label">Questions Logged</div></div>
+    <div class="stat-card" style="border-top:2px solid #4ade80;"><div class="stat-value" style="color:#4ade80;">${avg}/10</div><div class="stat-label">Average Score</div></div>
+    <div class="stat-card" style="border-top:2px solid #60a5fa;"><div class="stat-value" style="color:#60a5fa;">${readiness}%</div><div class="stat-label">Readiness Score</div></div>
+    <div class="stat-card" style="border-top:2px solid #f87171;"><div class="stat-value" style="color:#f87171;">${weakest?weakest.name:'—'}</div><div class="stat-label">Weakest Area</div></div>
+  `;
+  const chartEl=document.getElementById('bar-chart');chartEl.innerHTML='';
+  catData.forEach(c=>{
+    const h=Math.max(8,Math.round((c.score/10)*135));
+    const col=document.createElement('div');col.className='bar-col';
+    col.innerHTML=`<div class="bar-score">${c.score}</div><div class="bar-rect" style="height:${h}px;background:${sc(c.score)};"></div><div class="bar-label">${c.icon} ${c.name.split(' ')[0]}</div>`;
+    chartEl.appendChild(col);
+  });
+  document.getElementById('history-list').innerHTML=history.slice().reverse().slice(0,10).map((h,i,arr)=>`
+    <div class="history-row" style="${i===arr.length-1?'border-bottom:none;':''}">
+      <div><div style="font-size:13px;color:#cbd5e1;margin-bottom:2px;">${esc(h.q)}</div><div style="font-size:11px;color:#64748b;">${esc(h.cat)}</div></div>
+      <div style="font-size:14px;font-weight:800;color:${sc(h.score)};margin-left:13px;flex-shrink:0;">${h.score}/10</div>
+    </div>`).join('');
+}
+
+// ===== STORY BANK =====
+const STORY_TEMPLATES = [
+  {id:'why_ib',label:'Why IB?',tip:'Interviewers want specificity — not "I love finance." Name a deal you read about, a modeling project, or a person whose work inspired you. Connect it to your long-term goals.',fields:['What sparked your interest in IB specifically?','What finance experience or analysis have you done that reinforces this?','What specific skill or experience do you want from IB?','Where does IB fit into your 5–10 year plan?']},
+  {id:'why_bank',label:'Why This Bank?',tip:'Research before every interview: a recent deal, a group you want to work in, an alumnus you spoke with. Generic answers ("great culture, top tier") are red flags.',fields:['What specific deals, groups, or initiatives at this bank interest you?','Who have you spoken with here and what did you learn?','How does this bank\'s culture/specialty match what you\'re looking for?','What would you contribute to this specific team?']},
+  {id:'resume',label:'Resume Walkthrough',tip:'Start with your most recent experience and work backward. Keep each stop to 2–3 sentences. Emphasize finance-relevant work and end with "which is why I\'m excited about this opportunity." Practice this until it\'s under 90 seconds.',fields:['Opening line / current situation (school, year, major)','Most relevant finance experience or project (your strongest signal)','Supporting experience or achievement (second strongest)','Why all of this points to IB now']},
+  {id:'weakness',label:'Greatest Weakness',tip:'Pick something real that you\'ve genuinely worked on — not a strength in disguise. Show self-awareness and a growth trajectory. End on improvement, not the problem.',fields:['What is the actual weakness (be honest)?','Specific example of when it cost you or held you back','What concrete steps have you taken to improve?','Evidence that you\'ve made progress']},
+  {id:'failure',label:'A Time You Failed',tip:'This tests self-awareness and resilience — not perfection. Pick a real failure (not a minor setback). Interviewers want to see that you take ownership and learn from it.',fields:['What happened — what was the failure? (Situation + Task)','What did YOU do that contributed to it? (Own it)','What did you learn specifically?','How have you applied that lesson since?']},
+  {id:'leadership',label:'A Time You Led',tip:'Leadership doesn\'t require a title. A class project, a student org, a work team all count. Focus on what YOU specifically did — decisions made, people influenced, outcome driven.',fields:['What was the situation and why did it need leadership?','What was your specific role and the challenge you faced?','What actions did you take to lead/influence the group?','What was the measurable result?']},
+  {id:'conflict',label:'A Conflict With a Teammate',tip:'This tests emotional intelligence and professionalism. Pick a real conflict — not a trivial disagreement. Show that you\'re direct, respectful, and solution-oriented. Don\'t throw the other person under the bus.',fields:['What was the situation and who was involved?','What was the source of conflict (different priorities, style, etc.)?','How did you address it — what did you actually say or do?','What was the outcome and what would you do the same or differently?']},
+  {id:'persuasion',label:'A Time You Persuaded Someone',tip:'Pick a case where you had a real disagreement and changed someone\'s mind through logic or evidence — not just consensus-building. Shows analytical communication, which is core to banking.',fields:['What were you trying to convince someone of, and why did they resist?','What was your approach — how did you build your argument?','What evidence or logic did you use?','What happened and what did you learn about persuasion?']},
+  {id:'pressure',label:'Under Pressure / Tight Deadline',tip:'IB interviews want to know you can handle the pace. Pick something where the stakes were real and the timeline was short. Be specific about what YOU did differently under pressure.',fields:['What was the project or situation and why was it high-stakes?','What made it particularly challenging (timeline, complexity, resources)?','Specifically what did you do to execute under the pressure?','What was the outcome and how did it change how you operate?']},
+  {id:'accomplishment',label:'Biggest Accomplishment',tip:'This should be your single strongest signal of capability. Pick something where YOU drove the outcome — not a team win where your role was unclear. Quantify it.',fields:['What is the accomplishment and why does it stand out?','What made it difficult or impressive?','What specifically did you do to achieve it?','What is the quantified result or impact?']},
+];
+
+let currentStoryId = STORY_TEMPLATES[0].id;
+
+function loadStory(id){return JSON.parse(localStorage.getItem('ae_story_'+id)||'{}');}
+function saveStory(id,data){localStorage.setItem('ae_story_'+id,JSON.stringify(data));}
+function storyIsSaved(id){const d=loadStory(id);return Object.values(d).some(v=>v&&v.trim());}
+
+function renderStories(){
+  const tabs=document.getElementById('story-tabs');
+  tabs.innerHTML=STORY_TEMPLATES.map(s=>`<button class="story-tab ${s.id===currentStoryId?'active':''} ${storyIsSaved(s.id)&&s.id!==currentStoryId?'saved':''}" onclick="selectStory('${s.id}')">${storyIsSaved(s.id)?'✓ ':''} ${s.label}</button>`).join('');
+  renderStoryEditor();
+}
+
+function selectStory(id){currentStoryId=id;renderStories();}
+
+function renderStoryEditor(){
+  const tmpl=STORY_TEMPLATES.find(s=>s.id===currentStoryId);
+  const saved=loadStory(currentStoryId);
+  const el=document.getElementById('story-editor');
+
+  const buildSection = `
+    <div class="build-story-box">
+      <div style="font-size:11px;color:#4ade80;font-weight:700;letter-spacing:.1em;margin-bottom:8px;">⚡ BUILD MY STORY FROM SCRATCH</div>
+      <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:10px;">Describe your experience in 2–3 sentences and Claude will write the full STAR story for you — structured, specific, and interview-ready. Then paste it into the fields below and make it your own.</p>
+      <textarea id="quick-desc" rows="3" placeholder="e.g. During my sophomore year I had to put together a full financial model for a class competition in 48 hours while also studying for two exams. Our team won third place out of 40 teams..."></textarea>
+      <div class="row" style="margin-top:10px;">
+        <button class="btn-gold" style="background:#4ade80;color:#070d1a;" onclick="buildMyStory()">Build My Story</button>
+        <button class="btn-blue" onclick="window.open('https://claude.ai/new','_blank')">Open Claude.ai →</button>
+        <span class="copy-ok" id="build-ok">✓ Prompt Copied!</span>
+      </div>
+      <textarea id="build-prompt-out" readonly rows="4" style="display:none;margin-top:10px;font-size:12px;"></textarea>
+    </div>
+  `;
+  const resumeSection = currentStoryId === 'resume' ? `
+    <div style="background:#070d1a;border:1px solid #c9a84c40;border-radius:10px;padding:18px;margin-bottom:18px;">
+      <div style="font-size:11px;color:#c9a84c;font-weight:700;letter-spacing:.1em;margin-bottom:8px;">🚀 AUTO-GENERATE YOUR WALKTHROUGH FROM YOUR RESUME</div>
+      <p style="font-size:13px;color:#94a3b8;line-height:1.6;margin-bottom:12px;">Paste your resume text below, click the button, and copy the generated prompt into Claude.ai. Claude will write a polished, structured "Walk me through your resume" answer in your voice — ready to rehearse and make your own.</p>
+      <textarea id="resume-paste" rows="6" placeholder="Paste your full resume text here (copy from your Word doc or PDF)..." style="margin-bottom:10px;font-size:13px;"></textarea>
+      <div class="row">
+        <button class="btn-gold" onclick="generateResumeWalkthrough()">Generate Walkthrough Prompt</button>
+        <button class="btn-blue" onclick="window.open('https://claude.ai/new','_blank')">Open Claude.ai →</button>
+        <span class="copy-ok" id="resume-gen-ok">✓ Prompt Copied!</span>
+      </div>
+      <textarea id="resume-gen-prompt" readonly rows="5" style="margin-top:12px;display:none;font-size:12px;"></textarea>
+    </div>
+  ` : '';
+
+  el.innerHTML=`
+    <div class="card card-gold" style="padding:20px;margin-bottom:16px;">
+      <h2 style="font-size:16px;font-weight:700;margin-bottom:8px;">${tmpl.label}</h2>
+      <p class="story-tip">${tmpl.tip}</p>
+    </div>
+    ${buildSection}
+    ${resumeSection}
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+      ${tmpl.fields.map((f,i)=>`
+        <div class="star-field">
+          <label>${['S','T','A','R','⑤','⑥'][i]} — ${f}</label>
+          <textarea id="sf_${i}" rows="4" placeholder="Write your answer here...">${esc(saved['f'+i]||'')}</textarea>
+        </div>`).join('')}
+    </div>
+    <div class="row">
+      <button class="btn-gold" onclick="saveCurrentStory()">Save Story</button>
+      <button class="btn-ghost" onclick="clearCurrentStory()">Clear</button>
+      <button class="btn-blue" onclick="generateStoryPrompt()">Copy Story Prompt for Claude →</button>
+      <span class="copy-ok" id="story-save-ok">✓ Saved!</span>
+      <span class="copy-ok" id="story-copy-ok">✓ Prompt Copied!</span>
+    </div>`;
+}
+
+function saveCurrentStory(){
+  const tmpl=STORY_TEMPLATES.find(s=>s.id===currentStoryId);
+  const data={};
+  tmpl.fields.forEach((_,i)=>{data['f'+i]=document.getElementById('sf_'+i).value;});
+  saveStory(currentStoryId,data);
+  const ok=document.getElementById('story-save-ok');ok.style.display='inline';setTimeout(()=>ok.style.display='none',2000);
+  renderStories();
+}
+
+function clearCurrentStory(){
+  if(confirm('Clear this story? This cannot be undone.')){localStorage.removeItem('ae_story_'+currentStoryId);renderStories();}}
+
+function generateResumeWalkthrough(){
+  const resumeText = document.getElementById('resume-paste').value.trim();
+  if(!resumeText){alert('Paste your resume text first.');return;}
+  const prompt = `You are an investment banking coach helping a candidate nail their "Walk me through your resume" answer for IB interviews.
+
+Here is the candidate's resume:
+---
+${resumeText}
+---
+
+Write a polished, structured "Walk me through your resume" answer that:
+1. Opens with a one-sentence current situation (school, year, major)
+2. Hits 2–3 most finance-relevant experiences or projects with specific details and numbers
+3. Shows a clear narrative arc — each experience logically leads to the next
+4. Ends with a crisp closing that ties everything to why IB, why now
+5. Is designed to be spoken out loud in 60–90 seconds — conversational but precise
+
+Format it as a script they can rehearse. Then give 2–3 specific suggestions to make it even stronger.`;
+  const promptBox = document.getElementById('resume-gen-prompt');
+  promptBox.value = prompt;
+  promptBox.style.display = 'block';
+  copyText(prompt, 'resume-gen-ok');
+}
+
+function generateStoryPrompt(){
+  const tmpl=STORY_TEMPLATES.find(s=>s.id===currentStoryId);
+  const parts=tmpl.fields.map((f,i)=>`${f}: ${document.getElementById('sf_'+i).value||'(not filled in)'}`).join('\n');
+  const prompt=`You are a senior investment banking recruiter evaluating a candidate's behavioral story. Be direct and specific.
+
+Story category: ${tmpl.label}
+STAR answer:
+${parts}
+
+Please evaluate this story on:
+1. Structure — does it follow STAR cleanly?
+2. Specificity — are there concrete details and numbers?
+3. IB relevance — does it signal the qualities bankers want (analytical thinking, work ethic, teamwork, communication)?
+4. Delivery — is it concise and interview-ready (under 2 min)?
+5. Rewrite — give me an improved version I could say out loud in an interview.`;
+  copyText(prompt,'story-copy-ok');
+}
+
+// ===== MENTAL MATH =====
+const MM_PROBLEMS = [
+  {id:'m1',cat:'Quick Math',q:'17 × 18 = ?',a:'306',
+   steps:['Round 18 up to 20: 17 × 20 = 340','Subtract the extra (17 × 2 = 34): 340 − 34 = 306','Out loud: "17 times 20 is 340, minus 34 is 306."','Key trick: round to a friendly number, then subtract the overage.']},
+  {id:'m2',cat:'Quick Math',q:'23 × 24 = ?',a:'552',
+   steps:['Round 24 up to 25: 23 × 25 = ?','23 × 25 = 23 × 100 ÷ 4 = 2,300 ÷ 4 = 575','Subtract the overage (23 × 1 = 23): 575 − 23 = 552','Alternative: 20×24 + 3×24 = 480 + 72 = 552. Pick whichever is faster for you.']},
+  {id:'m3',cat:'Quick Math',q:'45 × 44 = ?',a:'1,980',
+   steps:['Break into parts: 45 × 44 = 45 × 40 + 45 × 4','45 × 40 = 1,800','45 × 4 = 180','1,800 + 180 = 1,980']},
+  {id:'m4',cat:'Quick Math',q:'15% of 360 = ?',a:'54',
+   steps:['Find 10% first: 360 ÷ 10 = 36','Find 5%: 36 ÷ 2 = 18','15% = 10% + 5% = 36 + 18 = 54','This approach (10% then half it for 5%) works for any percentage ending in 5.']},
+  {id:'m5',cat:'Quick Math',q:'7.5% of 400 = ?',a:'30',
+   steps:['Find 10%: 400 ÷ 10 = 40','Find 7%: 40 × 0.7 = 28','Find 0.5%: 40 × 0.05 = 2','7.5% = 7% + 0.5% = 28 + 2 = 30. Or: 5% = 20, 2.5% = 10, total = 30.']},
+  {id:'m6',cat:'Quick Math',q:'What is 1/8 as a percentage?',a:'12.5%',
+   steps:['1/8 = half of 1/4. And 1/4 = 25%.','Half of 25% = 12.5%','Key fractions to memorize: 1/3=33.3%, 1/4=25%, 1/5=20%, 1/6=16.7%, 1/7≈14.3%, 1/8=12.5%, 1/9≈11.1%','These come up constantly in ownership stakes, margin questions, and return calculations.']},
+  {id:'m7',cat:'Quick Math',q:'What is 1/6 as a percentage?',a:'16.67%',
+   steps:['1/6 = half of 1/3. And 1/3 = 33.33%.','Half of 33.33% = 16.67%','Real-world use: a 1/6 ownership stake = 16.7%. 6 equal partners = 16.7% each.','Also: 1/6 of $60M = $10M. Useful for quick splits.']},
+  {id:'m8',cat:'Quick Math',q:'125 × 8 = ?',a:'1,000',
+   steps:['125 × 8 = 1,000. This is a fundamental anchor — commit it to memory.','Why: 8 × 125 = 8 × (1000/8) = 1,000.','Real-world use: M&A advisory fee of 1.25% on an $800M deal = $10M. LBO with 8x leverage on $125M EBITDA = $1B EV.','Keep in mind: 25×4=100, 125×8=1,000, 250×4=1,000. Same family.']},
+  {id:'m9',cat:'Quick Math',q:'What is 35% of 80?',a:'28',
+   steps:['Find 10%: 80 ÷ 10 = 8','Find 30%: 8 × 3 = 24','Find 5%: 8 ÷ 2 = 4','35% = 30% + 5% = 24 + 4 = 28']},
+  {id:'m10',cat:'Quick Math',q:'37 × 3 = ?',a:'111',
+   steps:['Break into parts: 37 × 3 = 30×3 + 7×3','30 × 3 = 90','7 × 3 = 21','90 + 21 = 111. Quick sanity check: 40×3=120, so 111 is close but a bit less. ✓']},
+  {id:'m11',cat:'Finance Math',q:'EV = $500M, net debt = $100M. What is equity value?',a:'$400M',
+   steps:['Formula: Equity Value = Enterprise Value − Net Debt','$500M − $100M = $400M','Always clarify: Net Debt = Total Debt + Preferred + Minority Interest − Cash.','If net debt were negative (more cash than debt), equity value would be HIGHER than EV.']},
+  {id:'m12',cat:'Finance Math',q:'Company A: EV $100M, EBITDA $10M. Company B: EV $80M, EBITDA $9M. Which is cheaper on EV/EBITDA?',a:'Company B at 8.9x vs Company A at 10.0x',
+   steps:['Company A: $100M ÷ $10M = 10.0x EV/EBITDA','Company B: $80M ÷ $9M = 8.89x ≈ 8.9x EV/EBITDA','Lower multiple = cheaper. Company B is cheaper.','Interpretation: for every $1 of EBITDA, you pay $8.90 for Company B vs $10.00 for Company A.']},
+  {id:'m13',cat:'Finance Math',q:'$10M EBITDA, 5x leverage, 8x total purchase price (EV/EBITDA). What is the equity check?',a:'$30M',
+   steps:['Step 1: Calculate EV = Purchase Multiple × EBITDA = 8x × $10M = $80M','Step 2: Calculate Debt = Leverage Multiple × EBITDA = 5x × $10M = $50M','Step 3: Equity Check = EV − Debt = $80M − $50M = $30M','Check: Debt/EV = $50M/$80M = 62.5%. That\'s a typical LBO leverage ratio.']},
+  {id:'m14',cat:'Finance Math',q:'Invest $100M equity. Exit for $200M in 5 years. Approximate IRR?',a:'~14.9% ≈ 15%',
+   steps:['MOIC = $200M ÷ $100M = 2.0x','IRR formula: (MOIC)^(1/n) − 1 = (2.0)^(1/5) − 1','2^0.2 ≈ 1.149, so IRR ≈ 14.9% ≈ 15%','Quick reference table: 2x in 3yr≈26%, 4yr≈19%, 5yr≈15%, 7yr≈10%. Memorize these.']},
+  {id:'m15',cat:'Finance Math',q:'Revenue $200M, EBITDA margin 25%, D&A $15M, tax 30%, no interest. Net income?',a:'$24.5M',
+   steps:['EBITDA = $200M × 25% = $50M','EBIT = EBITDA − D&A = $50M − $15M = $35M','Pre-tax income = EBIT − Interest = $35M − $0 = $35M','Tax = $35M × 30% = $10.5M → Net income = $35M − $10.5M = $24.5M']},
+  {id:'m16',cat:'Finance Math',q:'A bond has a 5% coupon. Market rates rise to 6%. Premium or discount?',a:'Discount (price falls below par)',
+   steps:['When market rates rise above a bond\'s coupon, the bond becomes less attractive.','To compensate new buyers, the bond\'s price falls so the effective yield matches the market.','Example: $1,000 par bond, $50 coupon. At 6% required yield: Price = $50/0.06 ≈ $833. Trades at a discount.','Key rule: Rate ↑ → Bond price ↓. Rate ↓ → Bond price ↑. Always inverse.']},
+  {id:'m17',cat:'Finance Math',q:'$50M FCF, 3% growth, 10% WACC. Terminal value (Gordon Growth)?',a:'~$736M (or ~$714M simplified)',
+   steps:['Gordon Growth formula: TV = FCF × (1+g) / (WACC − g)','TV = $50M × 1.03 / (0.10 − 0.03) = $51.5M / 0.07 = $735.7M','Simplified (ignore 1+g): TV = $50M / 0.07 = $714M','Key check: what exit multiple does this imply? $736M / $50M FCF = ~14.7x. Does that make sense for this business?']},
+  {id:'m18',cat:'Finance Math',q:'Stock price $50, EPS $4. What is the P/E ratio?',a:'12.5x',
+   steps:['P/E = Price ÷ EPS = $50 ÷ $4 = 12.5x','Interpretation: investors pay $12.50 for every $1 of annual earnings.','Context: S&P 500 typically trades at 15–20x forward P/E. 12.5x is relatively cheap.','Note: P/E is an equity multiple (not EV-based). Don\'t use it for levered companies — use EV/EBITDA instead.']},
+  {id:'m19',cat:'Market Sizing',q:'How many Starbucks locations are in the US?',a:'~16,000',
+   steps:['Framework: US population = ~330M people.','Density approach: Think about how many Starbucks you see in a mid-size city. NYC (~8M people) has ~350–400 = roughly 1 per 20,000 people.','Apply nationally: 330M ÷ 20,000 = ~16,500. Adjust down for rural areas → ~16,000.','Always show your framework out loud — interviewers care more about your logic than the exact number.']},
+  {id:'m20',cat:'Market Sizing',q:'Estimate the size of the US fast food industry.',a:'~$280–320B',
+   steps:['Framework: TAM = (# people) × (frequency) × (average spend)','330M Americans × ~90 fast food visits/year × ~$9/visit','= 330M × 90 × 9 = 330M × $810 ≈ $267B','Round up for business meals, catering, delivery markup → ~$300B. Actual ~$300B. ✓']},
+  {id:'m21',cat:'Market Sizing',q:'How many commercial flights take off from US airports per day?',a:'~45,000 total operations',
+   steps:['Approach 1 — Passenger-based: ~900M passengers/year ÷ ~150 passengers per flight = 6M flights/year ÷ 365 = ~16,400/day.','But that\'s only passenger revenue flights. Add cargo, regional commuters, and repositioning flights.','Total FAA-tracked operations: ~45,000/day including all commercial aircraft.','Always sanity-check: major airports like ORD or ATL handle 900+ operations per day. 45,000 across all US airports is plausible.']},
+  {id:'m22',cat:'Market Sizing',q:'Estimate the US gym membership market.',a:'~$35–40B',
+   steps:['Population: 330M Americans. Penetration: ~20% are gym members = 66M members.','Average monthly fee: budget ($20) to premium ($100+). Weighted average ~$50/month = $600/year.','$600 × 66M = $39.6B ≈ $40B. Actual ~$35B (some churn, corporate discounts, etc.).','You can also cross-check: 30,000 gym locations in US × $1M avg revenue = $30B. Consistent.']},
+  {id:'m23',cat:'Market Sizing',q:'How many dentists practice in the US?',a:'~200,000',
+   steps:['A dentist handles ~1,500 patient visits/year. The average patient visits 2x/year.','Active patients per dentist: 1,500 ÷ 2 = ~750 patients.','If 60% of Americans (200M) visit a dentist: 200M ÷ 750 = ~267,000.','Adjust for part-time dentists, specialists, etc. → ~200,000. Actual: ~200,000. ✓']},
+  {id:'m24',cat:'Brain Teaser',q:'3 switches, 3 bulbs in another room. One trip only. How do you find which controls which?',a:'Turn switch 1 on 10 min → off. Turn switch 2 on. Walk in. Lit = switch 2. Warm/off = switch 1. Cold/off = switch 3.',
+   steps:['The key insight: you need 3 distinguishable states, but on/off only gives 2. Use HEAT as a third state.','Step 1: Turn switch 1 ON. Wait 10 minutes. Then turn switch 1 OFF.','Step 2: Turn switch 2 ON. Walk into the other room.','Identify: Bulb that is LIT → switch 2 (currently on). Bulb that is WARM but off → switch 1 (was on, now off). Bulb that is COLD and off → switch 3 (never touched).',
+   'Interviewers use this to test lateral thinking. Always narrate your logic step by step.']},
+  {id:'m25',cat:'Brain Teaser',q:'A clock reads 3:15. What is the angle between the hour and minute hands?',a:'7.5 degrees',
+   steps:['At 3:00: minute hand is at 90° (pointing at 3 = 3 × 30°/hr mark). Hour hand is also at 90°.','At 3:15: Minute hand moves 6°/minute × 15 min = 90°. Still pointing at 3 = 90°.','Hour hand moves 0.5°/minute × 15 min = 7.5°. Now at 90° + 7.5° = 97.5°.','Angle between hands = 97.5° − 90° = 7.5°. Key formulas: hour hand = 0.5°/min, minute hand = 6°/min.']},
+  {id:'m26',cat:'Brain Teaser',q:'3-gallon jug and 5-gallon jug. Measure exactly 4 gallons.',a:'Fill 5G → pour into 3G (fill it) → 2G remains in 5G → empty 3G → pour 2G into 3G → fill 5G again → pour 1G from 5G into 3G → 4G remains in 5G.',
+   steps:['Goal: get exactly 4 gallons. Think: 4 = 5 − 1. So you need to get rid of exactly 1 gallon.','Step 1: Fill the 5-gallon jug. (5G=5, 3G=0)','Step 2: Pour from 5G into 3G until full. (5G=2, 3G=3)','Step 3: Empty the 3G. (5G=2, 3G=0) → Step 4: Pour 2G into 3G. (5G=0, 3G=2)','Step 5: Fill 5G again. (5G=5, 3G=2) → Step 6: Pour from 5G into 3G until full (needs 1G). (5G=4, 3G=3) ✓']},
+  {id:'m27',cat:'Brain Teaser',q:'12 balls, one heavier. Balance scale, 3 weighings. Find the heavy ball.',a:'Weigh 4 vs 4. If equal, heavy ball is in the remaining 4 → weigh 2 vs 2 → then 1 vs 1. If unequal, take the heavier 4 → weigh 2 vs 2 → then 1 vs 1.',
+   steps:['Strategy: eliminate as many balls as possible with each weighing.','Weighing 1: Put 4 balls on each side. Set 4 aside. Result tells you which group of 4 contains the heavy ball.','Weighing 2: Take the 4 suspects. Weigh 2 vs 2. The heavier side contains the heavy ball.','Weighing 3: Take the 2 suspects. Weigh 1 vs 1. Heavier one = the heavy ball. Done in exactly 3 weighings.','This is a classic divide-and-conquer problem. Shows structured, methodical thinking.']},
+  {id:'m28',cat:'Brain Teaser',q:'9 × 13 = ?',a:'117',
+   steps:['Method 1: (10−1) × 13 = 130 − 13 = 117','Method 2: 9×10 + 9×3 = 90 + 27 = 117','Always verify with two methods. If both give 117, you\'re confident.','Rule: for anything × 9, use (10−1) × n = 10n − n. Fast and reliable.']},
+  {id:'m29',cat:'Brain Teaser',q:'What is 1.5% of $800M?',a:'$12M',
+   steps:['Find 1%: $800M × 0.01 = $8M','Find 0.5%: $8M ÷ 2 = $4M','1.5% = 1% + 0.5% = $8M + $4M = $12M','Real use: M&A advisory fees are typically 0.5%–2% of deal value. "What\'s your fee on an $800M deal at 1.5%?" → $12M. You need this instantly.']},
+  {id:'m30',cat:'Brain Teaser',q:'Invest $1, double every year for 10 years. How much do you have?',a:'$1,024',
+   steps:['$1 doubles each year: $1 → $2 → $4 → $8 → $16 → $32 → $64 → $128 → $256 → $512 → $1,024','Formula: $1 × 2^10 = 1,024','Key powers of 2 to memorize: 2^7=128, 2^10=1,024, 2^20≈1M, 2^30≈1B','Rule of 72: divide 72 by annual % return to find years to double. At 100%/yr: 72/100 < 1 year. At 10%: doubles in 7.2 years.']},
+];
+
+let mmCat = null;
+let mmDeck = [];
+let mmIdx = 0;
+let mmRevealed = false;
+let mmCorrect = 0;
+let mmWrong = 0;
+let mmStreak = 0;
+let mmTimerInterval = null;
+let mmTimeLeft = 30;
+let mmCurrentDrill = 'math';
+
+function switchDrill(type){
+  mmCurrentDrill = type;
+  document.querySelectorAll('.drill-tab').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('drill-math').style.display = type==='math'?'block':'none';
+  document.getElementById('drill-resume').style.display = type==='resume'?'block':'none';
+}
+
+function renderDrills(){
+  const cats=['All',...new Set(MM_PROBLEMS.map(p=>p.cat))];
+  document.getElementById('mm-cat-filter').innerHTML = cats.map(c=>`<button class="cat-pill ${(!mmCat&&c==='All')||(mmCat===c)?'active':''}" onclick="setMmCat('${c}')">${c}</button>`).join('');
+  buildMmDeck();
+  showMmCard();
+}
+
+function setMmCat(cat){mmCat=cat==='All'?null:cat;renderDrills();}
+
+function buildMmDeck(){
+  mmDeck = mmCat ? MM_PROBLEMS.filter(p=>p.cat===mmCat) : [...MM_PROBLEMS];
+  mmDeck = mmDeck.sort(()=>Math.random()-0.5);
+  mmIdx = 0;
+}
+
+function showMmCard(){
+  if(!mmDeck.length){return;}
+  const p = mmDeck[mmIdx % mmDeck.length];
+  mmRevealed = false;
+  document.getElementById('mm-qcat').textContent = p.cat.toUpperCase();
+  document.getElementById('mm-q').textContent = p.q;
+  document.getElementById('mm-answer').textContent = p.a;
+  // Build step-by-step breakdown
+  const stepsHtml = (p.steps||[]).map((s,i)=>`<div style="display:flex;gap:9px;padding:7px 0;border-bottom:${i<p.steps.length-1?'1px solid #1e3a5f30':'none'};"><span style="color:#c9a84c;font-weight:700;font-size:12px;flex-shrink:0;margin-top:1px;">${i+1}</span><span style="font-size:13px;color:#94a3b8;line-height:1.55;">${s}</span></div>`).join('');
+  document.getElementById('mm-steps').innerHTML = stepsHtml;
+  document.getElementById('mm-answer-box').style.display = 'none';
+  document.getElementById('mm-buttons').style.display = 'flex';
+  document.getElementById('mm-rate-buttons').style.display = 'none';
+  startMmTimer();
+}
+
+function startMmTimer(){
+  clearInterval(mmTimerInterval);
+  mmTimeLeft = 30;
+  updateMmTimer();
+  mmTimerInterval = setInterval(()=>{
+    mmTimeLeft--;
+    updateMmTimer();
+    if(mmTimeLeft<=0){clearInterval(mmTimerInterval);revealMM();}
+  },1000);
+}
+
+function updateMmTimer(){
+  const el = document.getElementById('mm-timer');
+  el.textContent = '0:'+String(mmTimeLeft).padStart(2,'0');
+  el.style.color = mmTimeLeft<=10?'#f87171':mmTimeLeft<=20?'#fbbf24':'#60a5fa';
+}
+
+function revealMM(){
+  clearInterval(mmTimerInterval);
+  mmRevealed = true;
+  document.getElementById('mm-answer-box').style.display = 'block';
+  document.getElementById('mm-buttons').style.display = 'none';
+  document.getElementById('mm-rate-buttons').style.display = 'flex';
+}
+
+function rateMM(correct){
+  if(correct){mmCorrect++;mmStreak++;}
+  else{mmWrong++;mmStreak=0;}
+  updateMmScores();
+  mmIdx++;
+  if(mmIdx>=mmDeck.length){mmIdx=0;mmDeck=mmDeck.sort(()=>Math.random()-0.5);}
+  showMmCard();
+}
+
+function nextMM(){
+  clearInterval(mmTimerInterval);
+  mmIdx++;
+  if(mmIdx>=mmDeck.length){mmIdx=0;mmDeck=mmDeck.sort(()=>Math.random()-0.5);}
+  showMmCard();
+}
+
+function updateMmScores(){
+  document.getElementById('mm-correct').textContent = mmCorrect;
+  document.getElementById('mm-wrong').textContent = mmWrong;
+  const total = mmCorrect+mmWrong;
+  document.getElementById('mm-pct').textContent = total ? Math.round(mmCorrect/total*100)+'%' : '—';
+  document.getElementById('mm-streak').textContent = mmStreak;
+}
+
+// ===== RESUME REVIEWER =====
+function onBulletChange(){
+  const bullet = document.getElementById('resume-bullet').value.trim();
+  const btn = document.getElementById('resume-copy-btn');
+  const aiBtn = document.getElementById('resume-ai-grade-btn');
+  if(bullet){
+    document.getElementById('resume-prompt').value = buildResumePrompt(bullet);
+    btn.disabled = false;
+    aiBtn.disabled = false;
+  } else {
+    document.getElementById('resume-prompt').value = '';
+    btn.disabled = true;
+    aiBtn.disabled = true;
+  }
+}
+async function gradeResumeWithAI(){
+  const bullet = document.getElementById('resume-bullet').value.trim();
+  if(!bullet) return;
+  await callAiInApp('⚡ Resume Bullet Review', buildResumePrompt(bullet));
+}
+
+function buildResumePrompt(bullet){
+  return `You are a senior investment banking recruiter and MD at a bulge bracket bank. Evaluate this resume bullet point from a finance candidate with brutal honesty.
+
+Resume bullet: "${bullet}"
+
+Score it 1–10 and grade it on these 5 criteria:
+1. ACTION VERB — Does it start with a strong, specific verb? (Built, Modeled, Analyzed, Executed = good. Helped, Assisted, Supported, Worked = weak.)
+2. QUANTIFICATION — Is there a dollar amount, %, multiple, or specific metric? Without numbers, a bullet is nearly invisible on an IB resume.
+3. FINANCE SIGNAL — Does it correctly use IB/finance vocabulary? Does it show the candidate understands how deals, models, or markets work?
+4. SPECIFICITY — Is it tied to a real company, deal, model, or deliverable? Or is it generic?
+5. CONCISENESS — Is it under 2 lines? Does every word earn its place?
+
+Then: rewrite it at an interview-ready level that would stand out on a Goldman Sachs or Evercore application. Show the improved version clearly labeled "IMPROVED BULLET."`;
+}
+
+function copyResume(){copyText(document.getElementById('resume-prompt').value,'resume-copy-ok');}
+
+// ===== API KEY + IN-APP AI =====
+function getApiKey(){return localStorage.getItem('ae_api_key')||'';}
+function hasApiKey(){return !!getApiKey();}
+
+function saveApiKey(){
+  const key=document.getElementById('api-key-input').value.trim();
+  if(!key){alert('Paste your API key first.');return;}
+  localStorage.setItem('ae_api_key',key);
+  document.getElementById('api-badge').style.display='inline';
+  document.getElementById('api-status-msg').innerHTML='<span style="color:#4ade80;">✓ API key saved. All AI responses will now appear directly in the app.</span>';
+  const ok=document.getElementById('key-saved-ok');ok.style.display='inline';setTimeout(()=>ok.style.display='none',3000);
+  refreshAiUi();
+}
+
+function clearApiKey(){
+  localStorage.removeItem('ae_api_key');
+  document.getElementById('api-key-input').value='';
+  document.getElementById('api-badge').style.display='none';
+  document.getElementById('api-status-msg').innerHTML='<span style="color:#64748b;">Key removed. Using free copy/paste flow.</span>';
+  refreshAiUi();
+}
+
+function refreshAiUi(){
+  const show=hasApiKey();
+  document.querySelectorAll('.ai-only').forEach(el=>{el.style.display=show?'inline-block':'none';});
+}
+
+function openSettings(){
+  const key=getApiKey();
+  if(key) document.getElementById('api-key-input').value=key;
+  document.getElementById('api-status-msg').innerHTML = hasApiKey()
+    ? '<span style="color:#4ade80;">✓ API key active — responses appear in-app.</span>'
+    : '<span style="color:#64748b;">No key set — using free copy/paste flow.</span>';
+  document.getElementById('settings-modal').style.display='flex';
+}
+function closeSettings(){document.getElementById('settings-modal').style.display='none';}
+
+async function callAiInApp(title, prompt){
+  const key=getApiKey();
+  if(!key) return null;
+  showAiModal(title, null); // show loading
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-5',max_tokens:1200,messages:[{role:'user',content:prompt}]})
+    });
+    const d=await r.json();
+    if(d.error){throw new Error(d.error.message);}
+    const text=d.content[0].text;
+    showAiModal(title, text);
+    return text;
+  }catch(e){
+    showAiModal(title, null, 'Error: '+e.message+'. Check your API key in Settings.');
+    return null;
+  }
+}
+
+function showAiModal(title, text, error){
+  document.getElementById('ai-modal-title').textContent=title;
+  if(text){
+    document.getElementById('ai-modal-body').innerHTML=`<div class="ai-response-body">${esc(text)}</div>`;
+  } else if(error){
+    document.getElementById('ai-modal-body').innerHTML=`<p style="color:#f87171;font-size:13px;">${esc(error)}</p>`;
+  } else {
+    document.getElementById('ai-modal-body').innerHTML=`<div class="ai-loading"><div class="ai-dot"></div>Claude is thinking...</div>`;
+  }
+  document.getElementById('ai-response-modal').style.display='flex';
+}
+function closeAiModal(){document.getElementById('ai-response-modal').style.display='none';}
+
+// ===== DON'T KNOW =====
+function dontKnowQuestion(){
+  if(!currentQ) return;
+  const prompt=`You are an investment banking coach. A student is preparing for IB interviews and doesn't know how to answer this question:
+
+"${currentQ.q}" (Category: ${currentQ.cat})
+
+Please give them:
+1. PLAIN-ENGLISH EXPLANATION — what this concept actually means, from the ground up. No jargon without definition.
+2. WHY INTERVIEWERS ASK THIS — what they're really testing for.
+3. THE KEY COMPONENTS — bullet list of everything a strong answer must cover.
+4. COMMON MISTAKES — what candidates usually get wrong or miss.
+5. EXAMPLE STRONG ANSWER — a concise model answer they could actually say out loud.
+
+Write it like you're explaining to a smart sophomore who understands basics but hasn't seen this before.`;
+
+  if(hasApiKey()){
+    callAiInApp('📖 Concept Explanation: '+currentQ.cat, prompt);
+  } else {
+    copyText(prompt,'copy-ok');
+    const promptBox=document.getElementById('generated-prompt');
+    promptBox.value=prompt;
+    alert('Explanation prompt copied! Paste it into Claude.ai and you\'ll get a full breakdown. To get explanations directly in the app, add your API key in Settings.');
+  }
+}
+
+// ===== FLASHCARD EXPLAIN =====
+function explainFlashcard(){
+  const nonMastered=fcDeck.filter(c=>!fcMastered.has(c.id));
+  if(!nonMastered.length) return;
+  const cur=nonMastered[fcIdx%nonMastered.length];
+  const prompt=`You are an investment banking coach. Explain this flashcard concept in depth to a student preparing for IB interviews.
+
+Concept: "${cur.q}"
+Short answer: "${cur.a}"
+Category: ${cur.cat}
+
+Give them:
+1. DEEP EXPLANATION — go beyond the one-liner. Explain WHY this works, the underlying mechanics.
+2. HOW IT CONNECTS — how does this concept link to other things they'll be asked about in an IB interview?
+3. WORKED EXAMPLE — walk through a concrete numerical or real-world example.
+4. INTERVIEW CONTEXT — when would an interviewer ask this, and what follow-up questions should they expect?
+5. MEMORY HOOK — a simple way to remember this so it sticks.`;
+
+  if(hasApiKey()){
+    callAiInApp('💡 Deep Dive: '+cur.cat, prompt);
+  } else {
+    copyText(prompt,'copy-ok');
+    alert('Deep dive prompt copied! Paste it into Claude.ai for the full explanation. Add your API key in Settings to get explanations directly in-app.');
+  }
+}
+
+// ===== BUILD MY STORY =====
+function buildMyStory(){
+  const desc=document.getElementById('quick-desc').value.trim();
+  if(!desc){alert('Describe your experience first in 2–3 sentences.');return;}
+  const tmpl=STORY_TEMPLATES.find(s=>s.id===currentStoryId);
+  const prompt=`You are an investment banking interview coach. A candidate is preparing their "${tmpl.label}" behavioral story for IB interviews.
+
+Here is their rough description of the experience:
+"${desc}"
+
+Write a complete, polished STAR story they can say out loud in an IB interview. Format it clearly with:
+SITUATION: (1–2 sentences of context)
+TASK: (what they needed to accomplish)
+ACTION: (specifically what THEY did — this should be 60% of the answer, with specific steps)
+RESULT: (quantified outcome if possible)
+CLOSING LINE: (one sentence connecting it to IB/their goals)
+
+Requirements:
+- Should take 60–90 seconds to say out loud
+- Use specific, active language — no vague phrases like "I helped" or "I assisted"
+- Include a number or concrete metric in the result if at all possible
+- Sound natural and conversational, not like a robot wrote it
+- Then give 2 suggestions to make it even stronger`;
+
+  if(hasApiKey()){
+    callAiInApp('⚡ Building Your '+tmpl.label+' Story', prompt);
+  } else {
+    const out=document.getElementById('build-prompt-out');
+    out.value=prompt;out.style.display='block';
+    copyText(prompt,'build-ok');
+  }
+}
+
+// ===== INIT =====
+setupDailyQ();
+renderPracticeList();
+document.getElementById('page-stories').style.display='none';
+document.getElementById('page-drills').style.display='none';
+// Check for existing API key
+if(hasApiKey()){document.getElementById('api-badge').style.display='inline';}
+refreshAiUi();
+</script>
+<!-- SETTINGS MODAL -->
+<div class="modal-overlay" id="settings-modal" style="display:none;" onclick="if(event.target===this)closeSettings()">
+  <div class="modal-box settings-box">
+    <button class="modal-close" onclick="closeSettings()">×</button>
+    <h2 style="font-size:18px;font-weight:800;margin-bottom:6px;">Settings</h2>
+    <p class="muted" style="font-size:13px;margin-bottom:20px;line-height:1.6;">Add an Anthropic API key to get AI responses directly inside the app — no more switching to Claude.ai. Each response costs about $0.005 or less.</p>
+    <div style="background:#070d1a;border:1px solid #c9a84c30;border-radius:10px;padding:16px;margin-bottom:18px;">
+      <p style="font-size:12px;color:#c9a84c;font-weight:700;letter-spacing:.1em;margin-bottom:8px;">OPTIONAL: IN-APP AI RESPONSES</p>
+      <p style="font-size:12px;color:#64748b;margin-bottom:12px;line-height:1.6;">Get a free API key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>. Usage for this app is roughly $1–3/month at heavy daily use. Without a key, the app still works 100% free via copy/paste to Claude.ai.</p>
+      <input type="password" id="api-key-input" placeholder="sk-ant-..." style="margin-bottom:10px;font-family:monospace;font-size:13px;">
+      <div class="row">
+        <button class="btn-gold" onclick="saveApiKey()">Save Key</button>
+        <button class="btn-ghost" onclick="clearApiKey()">Remove Key</button>
+        <span class="copy-ok" id="key-saved-ok">✓ Key saved — AI responses now appear in-app!</span>
+      </div>
+    </div>
+    <div id="api-status-msg" style="font-size:13px;color:#64748b;"></div>
+  </div>
+</div>
+
+<!-- AI RESPONSE MODAL -->
+<div class="modal-overlay" id="ai-response-modal" style="display:none;" onclick="if(event.target===this)closeAiModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeAiModal()">×</button>
+    <div id="ai-modal-title" style="font-size:12px;color:#c9a84c;font-weight:700;letter-spacing:.1em;margin-bottom:14px;"></div>
+    <div id="ai-modal-body">
+      <div class="ai-loading"><div class="ai-dot"></div>Claude is thinking...</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
